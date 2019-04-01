@@ -4,13 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WebsiteBanHoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'WebsiteBanHoa.dbo.AnhSanPham' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+    <Schema Namespace="WebsiteBanHoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AnhSanPham">
-          <Property Name="MaSanPham" Type="int" />
-          <Property Name="DuongDanAnh" Type="varchar" MaxLength="200" />
-        </EntityType>-->
+          <Key>
+            <PropertyRef Name="MaSanPham" />
+            <PropertyRef Name="DuongDanAnh" />
+          </Key>
+          <Property Name="MaSanPham" Type="int" Nullable="false" />
+          <Property Name="DuongDanAnh" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
         <EntityType Name="BaiViet">
           <Key>
             <PropertyRef Name="MaBaiViet" />
@@ -154,12 +156,14 @@ warning 6013: The table/view 'WebsiteBanHoa.dbo.AnhSanPham' does not have a prim
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'WebsiteBanHoa.dbo.TinNhan' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="TinNhan">
-          <Property Name="MaKhachHang" Type="int" />
-          <Property Name="TinNhan" Type="nvarchar(max)" />
-        </EntityType>-->
+          <Key>
+            <PropertyRef Name="MaKhachHang" />
+            <PropertyRef Name="TinNhan" />
+          </Key>
+          <Property Name="MaKhachHang" Type="int" Nullable="false" />
+          <Property Name="TinNhan" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
         <EntityType Name="TuKhoa">
           <Key>
             <PropertyRef Name="MaTuKhoa" />
@@ -167,9 +171,18 @@ warning 6013: The table/view 'WebsiteBanHoa.dbo.TinNhan' does not have a primary
           <Property Name="MaTuKhoa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TuKhoa" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <!--Errors Found During Generation:
-error 6004: The table 'WebsiteBanHoa.dbo.AnhSanPham' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__AnhSanPha__MaSan__403A8C7D" />-->
+        <Association Name="FK__AnhSanPha__MaSan__403A8C7D">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="AnhSanPham" Type="Self.AnhSanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="MaSanPham" />
+            </Principal>
+            <Dependent Role="AnhSanPham">
+              <PropertyRef Name="MaSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__BaiViet__MaDanhM__49C3F6B7">
           <End Role="DanhMucBaiViet" Type="Self.DanhMucBaiViet" Multiplicity="0..1" />
           <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
@@ -254,9 +267,18 @@ error 6004: The table 'WebsiteBanHoa.dbo.AnhSanPham' is referenced by a relation
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'WebsiteBanHoa.dbo.TinNhan' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__TinNhan__MaKhach__4F7CD00D" />-->
+        <Association Name="FK__TinNhan__MaKhach__4F7CD00D">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+          <End Role="TinNhan" Type="Self.TinNhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="MaKhachHang" />
+            </Principal>
+            <Dependent Role="TinNhan">
+              <PropertyRef Name="MaKhachHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_KhachHang_HoaDon_HoaDon">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
           <End Role="KhachHang_HoaDon" Type="Self.KhachHang_HoaDon" Multiplicity="*" />
@@ -342,6 +364,7 @@ error 6004: The table 'WebsiteBanHoa.dbo.TinNhan' is referenced by a relationshi
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WebsiteBanHoaModelStoreContainer">
+          <EntitySet Name="AnhSanPham" EntityType="Self.AnhSanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaiViet" EntityType="Self.BaiViet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DanhMucBaiViet" EntityType="Self.DanhMucBaiViet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DanhMucSanPham" EntityType="Self.DanhMucSanPham" Schema="dbo" store:Type="Tables" />
@@ -357,7 +380,12 @@ error 6004: The table 'WebsiteBanHoa.dbo.TinNhan' is referenced by a relationshi
           <EntitySet Name="SanPham_HoaDon" EntityType="Self.SanPham_HoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham_TuKhoa" EntityType="Self.SanPham_TuKhoa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TinNhan" EntityType="Self.TinNhan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TuKhoa" EntityType="Self.TuKhoa" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AnhSanPha__MaSan__403A8C7D" Association="Self.FK__AnhSanPha__MaSan__403A8C7D">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="AnhSanPham" EntitySet="AnhSanPham" />
+          </AssociationSet>
           <AssociationSet Name="FK__BaiViet__MaDanhM__49C3F6B7" Association="Self.FK__BaiViet__MaDanhM__49C3F6B7">
             <End Role="DanhMucBaiViet" EntitySet="DanhMucBaiViet" />
             <End Role="BaiViet" EntitySet="BaiViet" />
@@ -385,6 +413,10 @@ error 6004: The table 'WebsiteBanHoa.dbo.TinNhan' is referenced by a relationshi
           <AssociationSet Name="FK__SanPham_T__MaTuK__3E52440B" Association="Self.FK__SanPham_T__MaTuK__3E52440B">
             <End Role="TuKhoa" EntitySet="TuKhoa" />
             <End Role="SanPham_TuKhoa" EntitySet="SanPham_TuKhoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TinNhan__MaKhach__4F7CD00D" Association="Self.FK__TinNhan__MaKhach__4F7CD00D">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="TinNhan" EntitySet="TinNhan" />
           </AssociationSet>
           <AssociationSet Name="FK_KhachHang_HoaDon_HoaDon" Association="Self.FK_KhachHang_HoaDon_HoaDon">
             <End Role="HoaDon" EntitySet="HoaDon" />
@@ -415,8 +447,7 @@ error 6004: The table 'WebsiteBanHoa.dbo.TinNhan' is referenced by a relationshi
             <End Role="SanPham_HoaDon" EntitySet="SanPham_HoaDon" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebsiteBanHoaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -490,6 +521,7 @@ error 6004: The table 'WebsiteBanHoa.dbo.TinNhan' is referenced by a relationshi
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
           <NavigationProperty Name="KhachHang_SanPham" Relationship="Self.FK__KhachHang__MaKha__5165187F" FromRole="KhachHang" ToRole="KhachHang_SanPham" />
           <NavigationProperty Name="HoaDons" Relationship="Self.KhachHang_HoaDon" FromRole="KhachHang" ToRole="HoaDon" />
+          <NavigationProperty Name="TinNhans" Relationship="WebsiteBanHoaModel.FK__TinNhan__MaKhach__4F7CD00D" FromRole="KhachHang" ToRole="TinNhan" />
         </EntityType>
         <EntityType Name="KhachHang_SanPham">
           <Key>
@@ -528,6 +560,7 @@ error 6004: The table 'WebsiteBanHoa.dbo.TinNhan' is referenced by a relationshi
           <NavigationProperty Name="SanPham_HoaDon" Relationship="Self.FK_SanPham_HoaDon_SanPham" FromRole="SanPham" ToRole="SanPham_HoaDon" />
           <NavigationProperty Name="DanhMucSanPhams" Relationship="Self.SanPham_DanhMucSanPham" FromRole="SanPham" ToRole="DanhMucSanPham" />
           <NavigationProperty Name="TuKhoas" Relationship="Self.SanPham_TuKhoa" FromRole="SanPham" ToRole="TuKhoa" />
+          <NavigationProperty Name="AnhSanPhams" Relationship="WebsiteBanHoaModel.FK__AnhSanPha__MaSan__403A8C7D" FromRole="SanPham" ToRole="AnhSanPham" />
         </EntityType>
         <EntityType Name="SanPham_HoaDon">
           <Key>
@@ -699,7 +732,59 @@ error 6004: The table 'WebsiteBanHoa.dbo.TinNhan' is referenced by a relationshi
             <End Role="SanPham" EntitySet="SanPhams" />
             <End Role="TuKhoa" EntitySet="TuKhoas" />
           </AssociationSet>
+          <EntitySet Name="AnhSanPhams" EntityType="WebsiteBanHoaModel.AnhSanPham" />
+          <EntitySet Name="TinNhans" EntityType="WebsiteBanHoaModel.TinNhan" />
+          <AssociationSet Name="FK__AnhSanPha__MaSan__403A8C7D" Association="WebsiteBanHoaModel.FK__AnhSanPha__MaSan__403A8C7D">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="AnhSanPham" EntitySet="AnhSanPhams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TinNhan__MaKhach__4F7CD00D" Association="WebsiteBanHoaModel.FK__TinNhan__MaKhach__4F7CD00D">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="TinNhan" EntitySet="TinNhans" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AnhSanPham">
+          <Key>
+            <PropertyRef Name="MaSanPham" />
+            <PropertyRef Name="DuongDanAnh" />
+          </Key>
+          <Property Name="MaSanPham" Type="Int32" Nullable="false" />
+          <Property Name="DuongDanAnh" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SanPham" Relationship="WebsiteBanHoaModel.FK__AnhSanPha__MaSan__403A8C7D" FromRole="AnhSanPham" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="TinNhan">
+          <Key>
+            <PropertyRef Name="MaKhachHang" />
+            <PropertyRef Name="TinNhan1" />
+          </Key>
+          <Property Name="MaKhachHang" Type="Int32" Nullable="false" />
+          <Property Name="TinNhan1" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KhachHang" Relationship="WebsiteBanHoaModel.FK__TinNhan__MaKhach__4F7CD00D" FromRole="TinNhan" ToRole="KhachHang" />
+        </EntityType>
+        <Association Name="FK__AnhSanPha__MaSan__403A8C7D">
+          <End Type="WebsiteBanHoaModel.SanPham" Role="SanPham" Multiplicity="1" />
+          <End Type="WebsiteBanHoaModel.AnhSanPham" Role="AnhSanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="MaSanPham" />
+            </Principal>
+            <Dependent Role="AnhSanPham">
+              <PropertyRef Name="MaSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TinNhan__MaKhach__4F7CD00D">
+          <End Type="WebsiteBanHoaModel.KhachHang" Role="KhachHang" Multiplicity="1" />
+          <End Type="WebsiteBanHoaModel.TinNhan" Role="TinNhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="MaKhachHang" />
+            </Principal>
+            <Dependent Role="TinNhan">
+              <PropertyRef Name="MaKhachHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -864,6 +949,22 @@ error 6004: The table 'WebsiteBanHoa.dbo.TinNhan' is referenced by a relationshi
               <ScalarProperty Name="MaTuKhoa" ColumnName="MaTuKhoa" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="AnhSanPhams">
+            <EntityTypeMapping TypeName="WebsiteBanHoaModel.AnhSanPham">
+              <MappingFragment StoreEntitySet="AnhSanPham">
+                <ScalarProperty Name="DuongDanAnh" ColumnName="DuongDanAnh" />
+                <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TinNhans">
+            <EntityTypeMapping TypeName="WebsiteBanHoaModel.TinNhan">
+              <MappingFragment StoreEntitySet="TinNhan">
+                <ScalarProperty Name="TinNhan1" ColumnName="TinNhan" />
+                <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

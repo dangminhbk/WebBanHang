@@ -37,5 +37,7 @@ namespace WebBanHang.Models
         public virtual DbSet<SanPham_HoaDon> SanPham_HoaDon { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TuKhoa> TuKhoas { get; set; }
+        public virtual DbSet<AnhSanPham> AnhSanPhams { get; set; }
+        public virtual DbSet<TinNhan> TinNhans { get; set; }
     }
 }

@@ -147,6 +147,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AnhSanPhamsController.cs" />
     <Compile Include="Controllers\BaiVietsController.cs" />
     <Compile Include="Controllers\DanhMucBaiVietsController.cs" />
     <Compile Include="Controllers\DanhMucController.cs" />
@@ -156,9 +157,14 @@
     <Compile Include="Controllers\KhachHangsController.cs" />
     <Compile Include="Controllers\NhanViensController.cs" />
     <Compile Include="Controllers\SanPhamsController.cs" />
+    <Compile Include="Controllers\TinNhansController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
+    <Compile Include="Controllers\TuKhoasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AnhSanPham.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BaiViet.cs">
       <DependentUpon>CuaHangHoa.tt</DependentUpon>
@@ -208,6 +214,9 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>CuaHangHoa.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TinNhan.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TuKhoa.cs">
       <DependentUpon>CuaHangHoa.tt</DependentUpon>
     </Compile>
@@ -225,6 +234,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\bg-header.jpg" />
+    <Content Include="Image\icon\giohang.png" />
     <Content Include="Image\logo2.png" />
     <Content Include="Image\logo.png" />
     <Content Include="Image\speedwell.jpg" />
@@ -318,6 +328,21 @@
     <Content Include="Views\NhanViens\Details.cshtml" />
     <Content Include="Views\NhanViens\Edit.cshtml" />
     <Content Include="Views\NhanViens\Index.cshtml" />
+    <Content Include="Views\TinNhans\Create.cshtml" />
+    <Content Include="Views\TinNhans\Delete.cshtml" />
+    <Content Include="Views\TinNhans\Details.cshtml" />
+    <Content Include="Views\TinNhans\Edit.cshtml" />
+    <Content Include="Views\TinNhans\Index.cshtml" />
+    <Content Include="Views\AnhSanPhams\Create.cshtml" />
+    <Content Include="Views\AnhSanPhams\Delete.cshtml" />
+    <Content Include="Views\AnhSanPhams\Details.cshtml" />
+    <Content Include="Views\AnhSanPhams\Edit.cshtml" />
+    <Content Include="Views\AnhSanPhams\Index.cshtml" />
+    <Content Include="Views\TuKhoas\Create.cshtml" />
+    <Content Include="Views\TuKhoas\Delete.cshtml" />
+    <Content Include="Views\TuKhoas\Details.cshtml" />
+    <Content Include="Views\TuKhoas\Edit.cshtml" />
+    <Content Include="Views\TuKhoas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

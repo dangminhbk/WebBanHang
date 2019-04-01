@@ -22,6 +22,7 @@ namespace WebBanHang.Models
             this.SanPham_HoaDon = new HashSet<SanPham_HoaDon>();
             this.DanhMucSanPhams = new HashSet<DanhMucSanPham>();
             this.TuKhoas = new HashSet<TuKhoa>();
+            this.AnhSanPhams = new HashSet<AnhSanPham>();
         }
     
         public int MaSanPham { get; set; }
@@ -41,5 +42,7 @@ namespace WebBanHang.Models
         public virtual ICollection<DanhMucSanPham> DanhMucSanPhams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TuKhoa> TuKhoas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AnhSanPham> AnhSanPhams { get; set; }
     }
 }

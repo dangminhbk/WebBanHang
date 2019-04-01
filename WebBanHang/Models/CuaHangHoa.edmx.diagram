@@ -27,6 +27,10 @@
         <AssociationConnector Association="WebsiteBanHoaModel.NhanVien_HoaDon" ManuallyRouted="false" />
         <AssociationConnector Association="WebsiteBanHoaModel.SanPham_DanhMucSanPham" ManuallyRouted="false" />
         <AssociationConnector Association="WebsiteBanHoaModel.SanPham_TuKhoa" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WebsiteBanHoaModel.AnhSanPham" Width="1.5" PointX="5.25" PointY="19.625" />
+        <EntityTypeShape EntityType="WebsiteBanHoaModel.TinNhan" Width="1.5" PointX="5.25" PointY="16.625" />
+        <AssociationConnector Association="WebsiteBanHoaModel.FK__AnhSanPha__MaSan__403A8C7D" />
+        <AssociationConnector Association="WebsiteBanHoaModel.FK__TinNhan__MaKhach__4F7CD00D" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
