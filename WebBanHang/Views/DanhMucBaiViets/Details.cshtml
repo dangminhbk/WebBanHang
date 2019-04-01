@@ -1,0 +1,26 @@
+﻿@model WebBanHang.Models.DanhMucBaiViet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DanhMucBaiViet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDanhMucBaiViet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDanhMucBaiViet)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDanhMucBaiViet }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

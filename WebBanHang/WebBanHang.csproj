@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -139,9 +147,69 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BaiVietsController.cs" />
+    <Compile Include="Controllers\DanhMucBaiVietsController.cs" />
+    <Compile Include="Controllers\DanhMucController.cs" />
+    <Compile Include="Controllers\DanhMucSanPhamsController.cs" />
+    <Compile Include="Controllers\GiaSanPhamsController.cs" />
+    <Compile Include="Controllers\HoaDonsController.cs" />
+    <Compile Include="Controllers\KhachHangsController.cs" />
+    <Compile Include="Controllers\NhanViensController.cs" />
+    <Compile Include="Controllers\SanPhamsController.cs" />
+    <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaiViet.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CuaHangHoa.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CuaHangHoa.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CuaHangHoa.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CuaHangHoa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CuaHangHoa.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DanhMucBaiViet.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DanhMucSanPham.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GiaSanPham.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HoaDon.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachHang_SanPham.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhanVien.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SanPham.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SanPham_HoaDon.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TuKhoa.cs">
+      <DependentUpon>CuaHangHoa.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -150,12 +218,37 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Home\index.css" />
+    <Content Include="Content\DanhMuc\index.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\bg-header.jpg" />
+    <Content Include="Image\logo2.png" />
+    <Content Include="Image\logo.png" />
+    <Content Include="Image\speedwell.jpg" />
+    <Content Include="Image\sunflower.jpg" />
+    <Content Include="Image\tulips.jpg" />
+    <Content Include="Models\CuaHangHoa.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CuaHangHoa.edmx</DependentUpon>
+      <LastGenOutput>CuaHangHoa.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CuaHangHoa.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CuaHangHoa.edmx</DependentUpon>
+      <LastGenOutput>CuaHangHoa.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\CuaHangHoa.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CuaHangHoa.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\CuaHangHoa.edmx.diagram">
+      <DependentUpon>CuaHangHoa.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -174,17 +267,60 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\TrangChu\Index.cshtml" />
+    <Content Include="Views\DanhMuc\Index.cshtml" />
+    <Content Include="Views\SanPhams\Create.cshtml" />
+    <Content Include="Views\SanPhams\Delete.cshtml" />
+    <Content Include="Views\SanPhams\Details.cshtml" />
+    <Content Include="Views\SanPhams\Edit.cshtml" />
+    <Content Include="Views\SanPhams\Index.cshtml" />
+    <Content Include="Views\DanhMucSanPhams\Create.cshtml" />
+    <Content Include="Views\DanhMucSanPhams\Delete.cshtml" />
+    <Content Include="Views\DanhMucSanPhams\Details.cshtml" />
+    <Content Include="Views\DanhMucSanPhams\Edit.cshtml" />
+    <Content Include="Views\DanhMucSanPhams\Index.cshtml" />
+    <Content Include="Views\GiaSanPhams\Create.cshtml" />
+    <Content Include="Views\GiaSanPhams\Delete.cshtml" />
+    <Content Include="Views\GiaSanPhams\Details.cshtml" />
+    <Content Include="Views\GiaSanPhams\Edit.cshtml" />
+    <Content Include="Views\GiaSanPhams\Index.cshtml" />
+    <Content Include="Views\BaiViets\Create.cshtml" />
+    <Content Include="Views\BaiViets\Delete.cshtml" />
+    <Content Include="Views\BaiViets\Details.cshtml" />
+    <Content Include="Views\BaiViets\Edit.cshtml" />
+    <Content Include="Views\BaiViets\Index.cshtml" />
+    <Content Include="Views\DanhMucBaiViets\Create.cshtml" />
+    <Content Include="Views\DanhMucBaiViets\Delete.cshtml" />
+    <Content Include="Views\DanhMucBaiViets\Details.cshtml" />
+    <Content Include="Views\DanhMucBaiViets\Edit.cshtml" />
+    <Content Include="Views\DanhMucBaiViets\Index.cshtml" />
+    <Content Include="Views\HoaDons\Create.cshtml" />
+    <Content Include="Views\HoaDons\Delete.cshtml" />
+    <Content Include="Views\HoaDons\Details.cshtml" />
+    <Content Include="Views\HoaDons\Edit.cshtml" />
+    <Content Include="Views\HoaDons\Index.cshtml" />
+    <Content Include="Views\KhachHangs\Create.cshtml" />
+    <Content Include="Views\KhachHangs\Delete.cshtml" />
+    <Content Include="Views\KhachHangs\Details.cshtml" />
+    <Content Include="Views\KhachHangs\Edit.cshtml" />
+    <Content Include="Views\KhachHangs\Index.cshtml" />
+    <Content Include="Views\KhachHang_SanPham\Create.cshtml" />
+    <Content Include="Views\KhachHang_SanPham\Delete.cshtml" />
+    <Content Include="Views\KhachHang_SanPham\Details.cshtml" />
+    <Content Include="Views\KhachHang_SanPham\Edit.cshtml" />
+    <Content Include="Views\KhachHang_SanPham\Index.cshtml" />
+    <Content Include="Views\NhanViens\Create.cshtml" />
+    <Content Include="Views\NhanViens\Delete.cshtml" />
+    <Content Include="Views\NhanViens\Details.cshtml" />
+    <Content Include="Views\NhanViens\Edit.cshtml" />
+    <Content Include="Views\NhanViens\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -198,6 +334,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

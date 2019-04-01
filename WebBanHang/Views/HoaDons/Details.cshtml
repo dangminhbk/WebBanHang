@@ -1,0 +1,74 @@
+﻿@model WebBanHang.Models.HoaDon
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HoaDon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgaySuatHoaDon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySuatHoaDon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhToan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThanhToan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChiNguoiNhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiNguoiNhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonViGiaoHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonViGiaoHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaVanDon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaVanDon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHoaDon }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

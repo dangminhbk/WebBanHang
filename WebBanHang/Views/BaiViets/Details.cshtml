@@ -1,0 +1,50 @@
+﻿@model WebBanHang.Models.BaiViet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BaiViet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenBaiViet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenBaiViet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDungBaiViet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungBaiViet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayViet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayViet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DanhMucBaiViet.TenDanhMucBaiViet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanhMucBaiViet.TenDanhMucBaiViet)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaBaiViet }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
