@@ -13,18 +13,7 @@
 
 </head>
 <body>
-    <nav>
-        <div class="menu">
-            <ul class="menu-list">
-                <li class="active"><a href="#">Trang chủ</a></li>
-                <li><a href="#">Cửa hàng</a></li>
-                <li><a href="#">Bài viết</a></li>
-                <li><a href="#">Giới thiệu</a></li>
-                <li><a href="#">Liên hệ</a></li>
-            </ul>
-        </div>
-        <div class="logo"></div>
-    </nav>
+    @Html.Partial("Navbar")
     <aside>
         <div class="header-title">
             <h3> Danh muc </h3>
@@ -176,31 +165,6 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="footer-left">
-            <div class="info-wrap">
-                <h4>Thông tin liên hệ</h4>
-                <label>Địa chỉ: 195 Trần cung </label>
-                <label>Số điện thoại: 0123456789 </label>
-                <label>Email: dangminhbk@gmail.com </label>
-            </div>
-        </div>
-        <div class="footer-right">
-            <ul class="link-wrap">
-                <li> <a href="#">Trang chủ</a></li>
-                <li> <a href="#">Trang chủ</a></li>
-                <li> <a href="#">Trang chủ</a></li>
-                <li> <a href="#">Trang chủ</a></li>
-
-            </ul>
-            <ul class="contact-wrap">
-                <li> <a href="#">Trang chủ</a></li>
-                <li> <a href="#">Trang chủ</a></li>
-                <li> <a href="#">Trang chủ</a></li>
-                <li> <a href="#">Trang chủ</a></li>
-
-            </ul>
-        </div>
-    </footer>
+    @Html.Partial("Footer")
 </body>
 </html>

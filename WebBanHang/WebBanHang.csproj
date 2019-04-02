@@ -343,6 +343,8 @@
     <Content Include="Views\TuKhoas\Details.cshtml" />
     <Content Include="Views\TuKhoas\Edit.cshtml" />
     <Content Include="Views\TuKhoas\Index.cshtml" />
+    <Content Include="Views\Shared\Navbar.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
