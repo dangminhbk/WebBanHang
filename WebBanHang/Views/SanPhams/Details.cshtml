@@ -2,57 +2,51 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Main.cshtml";
 }
+<link href="~/Content/SanPham/sanpham.css" rel="stylesheet" />
+@Html.Action("AsidePartial", "DanhMuc")
 
-<h2>Details</h2>
+<main>
+    <div class="main-header">
+        <h2>@Model.TenSanPham</h2>
+    </div>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên sản phẩm
+            </dt>
 
-<div>
-    <h4>SanPham</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenSanPham)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TenSanPham)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenSanPham)
-        </dd>
+            <dt>
+                Màu sắc
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTaSanPham)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MauSac)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MoTaSanPham)
-        </dd>
+            <dt>
+                Trọng lượng
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MauSac)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TrongLuong)
+            </dd>
+            <dt>
+                Giá sản phẩm
+            </dt>
+            <dd>
+                @ViewBag.giaSp
+            </dd>
+        </dl>
+        <div class="content">
+            @Html.Raw(Model.MoTaSanPham)
+        </div>
+    </div>
+</main>
 
-        <dd>
-            @Html.DisplayFor(model => model.MauSac)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TrongLuong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TrongLuong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Promotion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Promotion)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaSanPham }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

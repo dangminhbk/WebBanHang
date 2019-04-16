@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
 <h2>Index</h2>
@@ -12,30 +13,31 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TenKhachHang)
+            Tên khách hàng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            Email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SoDienThoai)
+            Số điện thoại
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tenDangNhap)
+            Tên đăng nhập
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.matKhau)
+            Mật khẩu
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GioiTinh)
+            Giới tính
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgaySinh)
+            Ngày sinh
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
+    var gt = (bool)item.GioiTinh ? "Nam" : "Nữ";
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.TenKhachHang)
@@ -53,7 +55,7 @@
             @Html.DisplayFor(modelItem => item.matKhau)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.GioiTinh)
+            @gt
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NgaySinh)

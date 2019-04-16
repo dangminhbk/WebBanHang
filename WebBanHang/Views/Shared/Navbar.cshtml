@@ -1,12 +1,13 @@
 ﻿<nav>
     <div class="menu">
         <ul class="menu-list">
-            <li class="active"><a href="#">Trang chủ</a></li>
-            <li><a href="#">Cửa hàng</a></li>
-            <li><a href="#">Bài viết</a></li>
-            <li><a href="#">Giới thiệu</a></li>
-            <li><a href="#">Liên hệ</a></li>
+            <li>@Html.ActionLink("Trang chủ", "Index", "TrangChu")</li>
+            <li>@Html.ActionLink("Cửa hàng", "Index", "DanhMuc")</li>
+            <li>@Html.ActionLink("Bài viết", "Index", "TrangChu")</li>
+            <li>@Html.ActionLink("Giới thiệu", "Index", "TrangChu")</li>
+            <li>@Html.ActionLink("Admin", "Index", "DangNhap")</li>
         </ul>
     </div>
+    <span class="nav-button">=</span>
     <div class="logo"></div>
 </nav>

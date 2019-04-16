@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
 <h2>Index</h2>
@@ -12,25 +13,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NgaySuatHoaDon)
+            Ngày xuất hóa đơn
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ThanhToan)
+            Tình trạng thanh toán
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DiaChiNguoiNhan)
+            Địa chỉ người nhận
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SoDienThoai)
+            Số điện thoại
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DonViGiaoHang)
+            Đơn vị giao hàng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaVanDon)
+            Mã vận đơn
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TongTien)
+           Tổng tiền
         </th>
         <th></th>
     </tr>

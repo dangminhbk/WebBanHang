@@ -11,7 +11,8 @@ namespace WebBanHang.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+
     public partial class SanPham
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,6 +28,7 @@ namespace WebBanHang.Models
     
         public int MaSanPham { get; set; }
         public string TenSanPham { get; set; }
+        [AllowHtml]
         public string MoTaSanPham { get; set; }
         public string MauSac { get; set; }
         public Nullable<double> TrongLuong { get; set; }

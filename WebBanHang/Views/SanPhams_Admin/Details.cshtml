@@ -1,0 +1,73 @@
+﻿@model WebBanHang.Models.SanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Chi tiết sản phẩm</h2>
+
+<div class="ChiTiet">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Tên sản phẩm")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSanPham)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Mô tả sản phẩm")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTaSanPham)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Màu sắc")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MauSac)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Trọng lượng")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrongLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Khuyến mại")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Promotion)
+        </dd>
+
+        <dt> Giá mặt hàng </dt>
+        <dd></dd>
+        <dt> Áp dụng đến ngày </dt>
+        <dd></dd>
+    </dl>
+    <b class="DanhSachAnhTitle">Danh sách hình ảnh sản phẩm</b>
+    <div class="DanhSachAnh">
+        <img src="~/Image/tulips.jpg" style="width:200px"/>
+            <img src="~/Image/speedwell.jpg" style="width:200px" />
+            <img src="~/Image/sunflower.jpg"style="width:200px" />
+    </div>
+</div>
+<div class="button-row-bottom">
+    <button class="btn btn-primary">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaSanPham }) 
+    </button>
+    <button class="btn btn-primary">
+        @Html.ActionLink("Back to List", "Index")
+    </button>
+
+</div>

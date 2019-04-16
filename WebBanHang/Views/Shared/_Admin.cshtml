@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Shared/Admin.css" rel="stylesheet" />
+</head>
+<body>
+    @Html.Partial("Aside_Admin")
+    <main>
+        @RenderBody()
+    </main>
+    <script src="~/Scripts/ckeditor.js"></script>
+    <script>
+        var myTextField = document.getElementById('MoTaSanPham');
+        ClassicEditor
+            .create(myTextField)
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+</body>
+</html>

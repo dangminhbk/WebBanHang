@@ -1,0 +1,122 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 14px;
+}
+
+a:link, a:visited {
+    color:white;
+    text-decoration: none;
+    cursor: pointer;
+    text-transform:capitalize;
+}
+body {
+    display:grid;
+    grid-template-columns: minmax(100px, 200px) auto;
+    grid-template-rows:100vh;
+    grid-gap:10px;
+}
+aside a:link, a:visited {
+    color: white;
+
+}
+aside{
+    background-color:#4d054d;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    box-shadow:rgba(0,0,0,0.4) 3px 3px 3px;
+}
+aside .header{
+    height:6.5rem;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+aside .header h3{
+    color:white;
+    text-transform:uppercase;
+    font-size:1.5rem;
+    margin-bottom:2rem;
+}
+aside ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    margin-left:0px;
+    padding-left:0px;
+    width:100%;
+}
+    aside ul li {
+        padding: 10px 10px 10px 10px;
+    }
+    aside ul li:hover{
+        background-color:rgba(0,0,0,0.3);
+    }
+
+aside .bottom
+{
+    width:100%;
+    height:100px;
+    margin-top:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+    aside .bottom button{
+        width:80%;
+        height:40%;
+        background-color:rgba(0,0,0,0.3);
+        color:white;
+        border:none;
+    }
+    aside .bottom button:hover{
+        background-color:rgba(0,0,0,0.5);
+    }
+
+    .button-row{
+        display:flex;
+        flex-direction:row;
+    }
+    .button-row *{
+        margin-left:1px;
+        margin-right:1px;
+    }
+main{
+    background-color:white;
+}
+thead{
+    background-color:dimgrey;
+    color:white;
+}
+
+.DanhSachAnhTitle{
+    margin-left:30px;
+}
+
+.DanhSachAnh {
+    margin-left: 30px;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    grid-auto-rows: 200px;
+}
+
+.button-row-bottom{
+    margin-left:60px;
+    margin-top:30px;
+}
+
+.ChiTiet{
+    margin-left:30px;
+}
+/*Boostrap theme*/
+.btn-primary {
+    background-color: #4d054d;
+    border: none;
+}
+.btn-primary:hover{
+    background-color: rgba(0,0,0,0.4);
+}

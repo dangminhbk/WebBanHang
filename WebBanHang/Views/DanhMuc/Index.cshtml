@@ -1,44 +1,13 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main.cshtml";
 }
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-    <link href="https://fonts.googleapis.com/css?family=Caveat|Varela+Round&amp;subset=vietnamese" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/DanhMuc/index.css" rel="stylesheet" />
-
-</head>
-<body>
-    @Html.Partial("Navbar")
-    <aside>
-        <div class="header-title">
-            <h3> Danh muc </h3>
-        </div>
-        <div class="danhmuc">
-            <ul>
-                <li>
-                    <a href="#">Hoa trang tri</a>
-                </li>
-                <li>
-                    <a href="#">Hoa cuoi</a>
-                </li>
-                <li>
-                    <a href="#">Hoa dam ma</a>
-                </li>
-            </ul>
-        </div>
-        <div class="filter">
-            <ul class="filter-list">
-                <li></li>
-            </ul>
-        </div>
-    </aside>
+    @Html.Action("AsidePartial")
     <main>
-        <div class="main-header">
+    @Html.Action("DanhSach","DanhMuc",new { searchString = "All"})
+        @*<div class="main-header">
             <div class="main-header-title">
                 Danh sách sản phẩm
             </div>
@@ -53,7 +22,7 @@
                     </span>
                 </div>
                 <label class="sanpham-name">Hoa speedwell </label>
-                <label class="sanpham-price hidden-icon">20000 ₫</label>
+                <label class="sanpham-price">20000 ₫</label>
             </li>
             <li class="sanpham">
                 <div class="image-wrap">
@@ -64,7 +33,7 @@
                     </span>
                 </div>
                 <label class="sanpham-name">Hoa speedwell </label>
-                <label class="sanpham-price hidden-icon">20000 ₫</label>
+                <label class="sanpham-price">20000 ₫</label>
             </li>
             <li class="sanpham">
                 <div class="image-wrap">
@@ -75,7 +44,7 @@
                     </span>
                 </div>
                 <label class="sanpham-name">Hoa speedwell </label>
-                <label class="sanpham-price hidden-icon">20000 ₫</label>
+                <label class="sanpham-price">20000 ₫</label>
             </li>
             <li class="sanpham">
                 <div class="image-wrap">
@@ -86,7 +55,7 @@
                     </span>
                 </div>
                 <label class="sanpham-name">Hoa speedwell </label>
-                <label class="sanpham-price hidden-icon">20000 ₫</label>
+                <label class="sanpham-price">20000 ₫</label>
             </li>
             <li class="sanpham">
                 <div class="image-wrap">
@@ -97,7 +66,7 @@
                     </span>
                 </div>
                 <label class="sanpham-name">Hoa speedwell </label>
-                <label class="sanpham-price hidden-icon">20000 ₫</label>
+                <label class="sanpham-price">20000 ₫</label>
             </li>
             <li class="sanpham">
                 <div class="image-wrap">
@@ -108,7 +77,7 @@
                     </span>
                 </div>
                 <label class="sanpham-name">Hoa speedwell </label>
-                <label class="sanpham-price hidden-icon">20000 ₫</label>
+                <label class="sanpham-price">20000 ₫</label>
             </li>
             <li class="sanpham">
                 <div class="image-wrap">
@@ -119,7 +88,7 @@
                     </span>
                 </div>
                 <label class="sanpham-name">Hoa speedwell </label>
-                <label class="sanpham-price hidden-icon">20000 ₫</label>
+                <label class="sanpham-price">20000 ₫</label>
             </li>
             <li class="sanpham">
                 <div class="image-wrap">
@@ -130,7 +99,7 @@
                     </span>
                 </div>
                 <label class="sanpham-name">Hoa speedwell </label>
-                <label class="sanpham-price hidden-icon">20000 ₫</label>
+                <label class="sanpham-price">20000 ₫</label>
             </li>
             <li class="sanpham">
                 <div class="image-wrap">
@@ -141,9 +110,9 @@
                     </span>
                 </div>
                 <label class="sanpham-name">Hoa speedwell </label>
-                <label class="sanpham-price hidden-icon">20000 ₫</label>
+                <label class="sanpham-price">20000 ₫</label>
             </li>
-        </ul>
+        </ul>*@
         <div class="main-footer">
             <div class="footer-page">
                 <a href="#">
@@ -165,6 +134,3 @@
             </div>
         </div>
     </main>
-    @Html.Partial("Footer")
-</body>
-</html>

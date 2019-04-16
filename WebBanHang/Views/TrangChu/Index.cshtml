@@ -1,20 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_Main.cshtml";
 }
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Trang chủ</title>
-    <link href="https://fonts.googleapis.com/css?family=Caveat|Varela+Round&amp;subset=vietnamese" rel="stylesheet">
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/Home/index.css" rel="stylesheet" />
-
-</head>
-<body>
-    <div class="grid-body">
-        @Html.Partial("Navbar")
+<link href="~/Content/Home/index.css" rel="stylesheet" />
         <main>
             <div class="work">
                 <div class="slide">
@@ -117,9 +106,5 @@
                 </div>
             </div>
         </main>
-        @Html.Partial("Footer")
-    </div>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-</body>
-</html>
