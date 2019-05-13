@@ -1,15 +1,19 @@
 ﻿<aside>
     <div class="header">
-        <h3>Quản lý cửa hàng</h3>
+        <h3>Cửa hàng hoa</h3>
     </div>
     <ul>
-        <li><a href="/SanPhams_Admin">Mặt hàng</a></li>
+        <li><a href="/SanPhams">Mặt hàng</a></li>
+        <li><a href="/TinNhans">Danh mục</a></li>
+        <li><a href="/TinNhans">Bài viết</a></li>
         <li><a href="/TinNhans">Tin Nhắn</a></li>
         <li><a href="/KhachHangs">Khách hàng</a></li>
         <li><a href="/DanhMucSanPhams">Danh mục</a></li>
         <li><a href="/HoaDons">Hóa đơn</a></li>
     </ul>
     <div class="bottom">
-        <button class="btn-exit"> Đăng xuất </button>
+        <form action="/DangNhap/logout" method="get">
+            <button type="submit" class="btn btn-primary"> Đăng xuất </button>
+        </form>
     </div>
 </aside>

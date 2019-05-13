@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebBanHang.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Danh sách sản phẩm</h2>
+<table class="table">
+    <tr>
+        <th>
+            Tên danh mục
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSanPham)
+        </th>
+        <th>Ảnh</th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTaSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MauSac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrongLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaSanPham)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DanhMucSanPham.TenDanhMuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSanPham)
+        </td>
+        <td></td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTaSanPham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MauSac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrongLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaSanPham) vnđ
+        </td>
+        <td>
+            <button class="btn btn-primary">
+                @Html.ActionLink("Details", "Details", new { id = item.MaSanPham })
+            </button>
+            <button class="btn btn-danger">
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaSanPham })
+            </button>
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    <button class="btn btn-primary">
+        @Html.ActionLink("Create New", "Create")
+    </button>
+</p>

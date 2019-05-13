@@ -44,8 +44,9 @@ main .main-footer .footer-page {
         }
 
             main .main-header * {
+                text-transform:capitalize;
                 text-align: center;
-                font-size: 2rem;
+                font-size: 5rem;
             }
 
         main .main-list {
@@ -285,4 +286,35 @@ main .main-footer .footer-page {
 
             aside .danhmuc a:hover {
             }
+}
+
+.main-content{
+    margin-left:20px;
+    display:grid;
+    grid-template-columns: minmax(auto, 500px) auto;
+    grid-template-rows: auto auto;
+    grid-gap:10px;
+}
+.image-group{
+    grid-row:1;
+    grid-column:1;
+    display:grid;
+    grid-template-columns:50px auto;
+    grid-gap:5px;
+}
+.sub-image{
+    display:flex;
+    flex-direction:column;
+}
+.sub-image *{
+    object-fit:cover;
+    margin-top:3px;
+    margin-top:3px
+}
+.main-image{
+    width:100%;
+    height:100%;
+}
+.main-content .content{
+    grid-column:1/span 2;
 }
