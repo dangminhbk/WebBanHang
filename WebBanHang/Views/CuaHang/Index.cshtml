@@ -1,0 +1,29 @@
+﻿@model List<WebBanHang.Models.SanPham>
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+<div class="main-header">
+    <div class="main-header-title">
+        Danh sách sản phẩm
+    </div>
+</div>
+<ul class="main-list">
+    @foreach (var item in Model)
+    {
+        <li class="sanpham">
+            <a href="CuaHang/Details/@item.MaSanPham">
+                <div class="image-wrap">
+                    <img class="sanpham-image" src="~/Image/speedwell.jpg" alt="Alternate Text" />
+                    <span class="giohang-icon hidden-icon">
+                    </span>
+                    <span class="view-icon hidden-icon">
+                    </span>
+                </div>
+                <label class="sanpham-name">@item.TenSanPham </label>
+                <label class="sanpham-price">10000 vnd</label>
+            </a>
+        </li>
+    }
+</ul>
+
