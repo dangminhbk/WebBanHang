@@ -1,30 +1,28 @@
-﻿@model IEnumerable<WebBanHang.Models.SanPham>
+﻿@model IEnumerable<WebBanHang.Models.HoaDon>
 
 @{
-    /**/
-
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h2>Danh sách sản phẩm</h2>
+<h2>Danh sách hóa đơn</h2>
+
 <table class="table">
     <tr>
         <th>
-            Tên danh mục
+            @Html.DisplayNameFor(model => model.NgaySuatHoaDon)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TenSanPham)
-        </th>
-        <th>Ảnh</th>
-        <th>
-            @Html.DisplayNameFor(model => model.MauSac)
+            @Html.DisplayNameFor(model => model.ThanhToan)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TrongLuong)
+            @Html.DisplayNameFor(model => model.DiaChiNguoiNhan)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GiaSanPham)
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien)
         </th>
         <th></th>
     </tr>
@@ -33,32 +31,26 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DanhMucSanPham.TenDanhMuc)
+                @Html.DisplayFor(modelItem => item.NgaySuatHoaDon)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TenSanPham)
+                @Html.DisplayFor(modelItem => item.ThanhToan)
             </td>
             <td>
-                @if (item.AnhSanPhams.Count > 0)
-                {
-                    <img src="@item.AnhSanPhams.First().DuongDanAnh" width="80" height="80" alt="Alternate Text" />
-                }
+                @Html.DisplayFor(modelItem => item.DiaChiNguoiNhan)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MauSac)
+                @Html.DisplayFor(modelItem => item.SoDienThoai)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TrongLuong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiaSanPham) vnđ
+                @Html.DisplayFor(modelItem => item.TongTien)
             </td>
             <td>
                 <button class="btn btn-primary">
-                    @Html.ActionLink("Details", "Details", new { id = item.MaSanPham })
+                    @Html.ActionLink("Details", "Details", new { id = item.MaHoaDon })
                 </button>
-                <button class="btn btn-danger">
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MaSanPham })
+                <button class="btn btn-primary">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaHoaDon })
                 </button>
             </td>
         </tr>
@@ -99,7 +91,7 @@
             {
                 <button class="btn btn-primary">
                     @Html.ActionLink("Next", "Index", new { page = (int)ViewBag.pageCurrent + 1, pageSize = 7 })
-                </button> 
+                </button>
                 <div class="pager-num">
                     Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
                 </div>
@@ -111,7 +103,6 @@
     }
 </div>
 <hr />
-
 <p>
     <button class="btn btn-primary">
         @Html.ActionLink("Create New", "Create")

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+<div class="form-wrap">
+    <form action="/DangNhap/Login" method="post">
+        <h4>Tên đăng nhập</h4>
+        <input type="text" class="form-control" name="username" value="" />
+        <h4>Mật khẩu</h4>
+        <input type="password" class="form-control" name="password" value="" />
+        @if(ViewBag.fail == true)
+        {
+            <label>Đăng nhập thất bại</label>
+        }
+        <input type="submit" class="btn btn-primary" name="name" value="Đăng nhập" />
+    </form>
+</div>
+

@@ -148,7 +148,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\Admin\AnhSanPhamsController.cs" />
+    <Compile Include="Controllers\Admin\DanhMucSanPhamsController.cs" />
+    <Compile Include="Controllers\Admin\HoaDonsController.cs" />
     <Compile Include="Controllers\Admin\SanPhamsController.cs" />
+    <Compile Include="Controllers\Admin\TinNhansController.cs" />
+    <Compile Include="Controllers\DangNhapController.cs" />
+    <Compile Include="Controllers\KhachHang\CuaHangController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -230,12 +236,33 @@
     <Content Include="Views\SanPhams\Details.cshtml" />
     <Content Include="Views\SanPhams\Edit.cshtml" />
     <Content Include="Views\SanPhams\Index.cshtml" />
+    <Content Include="Views\DanhMucSanPhams\Create.cshtml" />
+    <Content Include="Views\DanhMucSanPhams\Delete.cshtml" />
+    <Content Include="Views\DanhMucSanPhams\Details.cshtml" />
+    <Content Include="Views\DanhMucSanPhams\Edit.cshtml" />
+    <Content Include="Views\DanhMucSanPhams\Index.cshtml" />
+    <Content Include="Views\HoaDons\Create.cshtml" />
+    <Content Include="Views\HoaDons\Delete.cshtml" />
+    <Content Include="Views\HoaDons\Details.cshtml" />
+    <Content Include="Views\HoaDons\Edit.cshtml" />
+    <Content Include="Views\HoaDons\Index.cshtml" />
+    <Content Include="Views\TinNhans\Create.cshtml" />
+    <Content Include="Views\TinNhans\Delete.cshtml" />
+    <Content Include="Views\TinNhans\Details.cshtml" />
+    <Content Include="Views\TinNhans\Edit.cshtml" />
+    <Content Include="Views\TinNhans\Index.cshtml" />
+    <Content Include="Views\AnhSanPhams\Create.cshtml" />
+    <Content Include="Views\AnhSanPhams\Delete.cshtml" />
+    <Content Include="Views\AnhSanPhams\Details.cshtml" />
+    <Content Include="Views\AnhSanPhams\Edit.cshtml" />
+    <Content Include="Views\AnhSanPhams\Index.cshtml" />
+    <Content Include="Views\DangNhap\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Shared\Admin\" />
-    <Folder Include="Controllers\KhachHang\" />
     <Folder Include="Uploaded\" />
+    <Folder Include="Views\CuaHang\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

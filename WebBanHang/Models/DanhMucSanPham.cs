@@ -1,7 +1,8 @@
-namespace WebBanHang.Models
+﻿namespace WebBanHang.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -16,8 +17,9 @@ namespace WebBanHang.Models
         }
 
         [Key]
+        [DisplayName("Mã danh mục")]
         public int MaDanhMuc { get; set; }
-
+        [DisplayName("Tên danh mục")]
         [StringLength(100)]
         public string TenDanhMuc { get; set; }
 

@@ -177,3 +177,10 @@ thead{
     justify-content: center;
     align-items: center;
 }
+
+.pager{
+    justify-content:center;
+    align-items:center;
+    display:flex;
+    flex-direction:row;
+}

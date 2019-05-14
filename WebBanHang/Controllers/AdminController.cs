@@ -7,6 +7,7 @@ using WebBanHang.Models;
 
 namespace WebBanHang.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         // GET: Admin

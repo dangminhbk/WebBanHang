@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebBanHang.Models.AnhSanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Danh sách hình ảnh</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SanPham.TenSanPham)
+        </th>
+        <th>Hình ảnh</th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SanPham.TenSanPham)
+        </td>
+        <td>
+            <img src="@item.DuongDanAnh" width="80" height="80"/>
+        </td>
+        <td>
+            <button class="btn btn-primary">
+                @Html.ActionLink("Edit", "Edit", new { masp = item.MaSanPham, duongdan = item.DuongDanAnh })
+            </button>
+            <button class="btn btn-danger">
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </button>
+        </td>
+    </tr>
+}
+
+</table>
