@@ -84,5 +84,7 @@ namespace WebBanHang.Models
                 .WithRequired(e => e.SanPham)
                 .WillCascadeOnDelete(false);
         }
+
+        public System.Data.Entity.DbSet<WebBanHang.Models.CartDetail> CartDetails { get; set; }
     }
 }

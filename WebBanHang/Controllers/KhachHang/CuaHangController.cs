@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebBanHang.Models;
@@ -38,6 +39,19 @@ namespace WebBanHang.Controllers.KhachHang
             ViewBag.pageCurrent = pageCurrent;
             ViewBag.pageTotal = pageTotal;
             return View(sanPhamsTrang);
+        }
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SanPham sanPham = db.SanPhams.Find(id);
+            if (sanPham == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sanPham);
         }
         public ActionResult AsidePartial()
         {
