@@ -11,7 +11,7 @@ namespace WebBanHang.Controllers.KhachHang
     {
         // GET: CuaHang
         private WebHoa db = new WebHoa();
-        public ActionResult Index(int? page, int? pageSize)
+        public ActionResult Index(int? page, int? pageSize , int?danhMuc)
         {
             int skip = 0;
             int take = 0;
@@ -29,11 +29,20 @@ namespace WebBanHang.Controllers.KhachHang
                 take = 9;
             }
             var sanPhams = db.SanPhams.ToList();
+            if (danhMuc!= null)
+            {
+                sanPhams = db.DanhMucSanPhams.Find(danhMuc).SanPhams.ToList();
+            }
             pageTotal = sanPhams.Count() / take + 1;
             var sanPhamsTrang = sanPhams.Skip(skip).Take(take).ToList();
             ViewBag.pageCurrent = pageCurrent;
             ViewBag.pageTotal = pageTotal;
             return View(sanPhamsTrang);
+        }
+        public ActionResult AsidePartial()
+        {
+            var DanhMucSP = db.DanhMucSanPhams.ToList();
+            return PartialView(DanhMucSP);
         }
     }
 }

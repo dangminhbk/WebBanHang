@@ -258,6 +258,8 @@
     <Content Include="Views\AnhSanPhams\Index.cshtml" />
     <Content Include="Views\DangNhap\Index.cshtml" />
     <Content Include="Views\CuaHang\Index.cshtml" />
+    <Content Include="Views\CuaHang\DanhSach.cshtml" />
+    <Content Include="Views\CuaHang\AsidePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
