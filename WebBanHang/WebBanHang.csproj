@@ -157,6 +157,8 @@
     <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\KhachHang\CartController.cs" />
     <Compile Include="Controllers\KhachHang\CuaHangController.cs" />
+    <Compile Include="Controllers\KhachHang_React\API\SanPhamAPIController.cs" />
+    <Compile Include="Controllers\KhachHang_React\KhachHangReactController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -173,6 +175,7 @@
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\SanPham_HoaDon.cs" />
+    <Compile Include="Models\SanPham_simple.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TinNhan.cs" />
     <Compile Include="Models\WebHoa.cs" />
@@ -189,6 +192,8 @@
     <Content Include="Content\SanPham\sanpham.css" />
     <Content Include="Content\Shared\Admin.css" />
     <Content Include="Content\Shared\Index.css" />
+    <Content Include="Database\WebsiteBanHoa.mdf" />
+    <Content Include="Database\WebsiteBanHoa_log.ldf" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -271,6 +276,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Shared\Admin\" />
     <Folder Include="Uploaded\" />
+    <Folder Include="Views\KhachHangReact\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
