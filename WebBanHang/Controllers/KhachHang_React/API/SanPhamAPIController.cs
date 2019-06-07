@@ -17,15 +17,22 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
         private WebHoa db = new WebHoa();
 
         // GET: api/SanPhamAPI
-        public List<SanPham_simple> GetSanPhams()
+        public List<SanPham_simple> GetSanPhams(int? page)
         {
+            int pageT = (int)((page == null) ? 1 : page);
             //IQueryable<SanPham_simple> DanhSachSanPham = from item in db.SanPhams select new SanPham_simple(item);
+            var dsSkip = db.SanPhams.ToList().Skip((pageT - 1) * 9).Take(9).ToList();
             var ds = new List<SanPham_simple>();
-            foreach (var item in db.SanPhams.ToList())
+            foreach (var item in dsSkip)
             {
                 ds.Add(new SanPham_simple(item));
             }
             return ds;
+        }
+        public int SoLuongTrang()
+        {
+            var count = db.SanPhams.Count();
+            return count / 9 + 1;
         }
 
         // GET: api/SanPhamAPI/5

@@ -9,7 +9,7 @@ namespace WebBanHang.Controllers.KhachHang_React
     public class KhachHangReactController : Controller
     {
         // GET: KhachHangReact
-        public ActionResult Index()
+        public ActionResult CuaHang()
         {
             return View();
         }
