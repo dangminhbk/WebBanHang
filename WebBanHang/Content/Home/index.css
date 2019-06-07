@@ -19,29 +19,23 @@ body {
 
 
 main {
-    background-color: #fed6d6;
+    background-image: url(https://static1.squarespace.com/static/5692bc2f1115e0dc63399b7e/t/5a722d639140b7750b417627/1517433132442/gmg-flourish-flower-farm-asheville-nc-1009855.jpg?format=2500w);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
     main .work {
-        background-color: #c30075;
+        background-color: #fff;
         height: 300px;
         display: grid;
         grid-template-columns: 1fr;
     }
-
-        main .work .right .big-image {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            margin-top: -200px;
-            margin-left: 50px;
-            border-radius: 10px;
-            transform: perspective( 600px ) rotateY( -30deg );
+        main .work .slide {
+            background-color: rgba(0,0,0,0);
         }
-
         main .work .slide #myCarousel {
+            background-color: rgba(0,0,0,0);
             height: 300px;
-            margin-top:-20px;
         }
 
             main .work .slide #myCarousel .item img {
@@ -55,7 +49,6 @@ main {
 
 
 .catalogue {
-    margin-top: 80px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -65,10 +58,7 @@ main {
     margin: auto;
     margin-bottom: 30px;
     margin-top: 30px;
-    background-color: #fed6d6;
-    border: 1px solid #513c07;
-    border-radius: 10px;
-    box-shadow: rgba(145,54,109,0.5) 4px 4px 10px;
+    background:rgba(0,0,0,0.6);
 }
 
     .catalogue .catalogue-label {
@@ -77,8 +67,8 @@ main {
         width: 200px;
         height: 3rem;
         border-radius: 5px;
-        background-color: #f2e7cb;
-        color: #513c07;
+        background-color: #4d052d;
+        color: #fff;
         font-size: 1.5rem;
         font-style: italic;
         text-transform: capitalize;
@@ -86,7 +76,6 @@ main {
         text-align: center;
         padding-top: 0.5rem;
         box-shadow: rgba(145,54,109,0.5) 4px 0px 3px;
-        font-family: 'Caveat', cursive;
     }
 
     .catalogue .catalogue-spotlight {
@@ -122,7 +111,7 @@ main {
                     font-size: 1.2rem;
                     margin-top: 10px;
                     text-align: center;
-                    color: #513c07;
+                    color: #fff;
                 }
 
 

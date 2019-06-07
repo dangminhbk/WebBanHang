@@ -11,3 +11,17 @@
         grid-template-rows: 40px auto auto auto auto;
         grid-gap: 5px;
     }
+.body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.btn-primary {
+    background-color: #4d052d;
+    border:none;
+}
+    .btn-primary:hover {
+        background-color: #c30075;
+        border: none;
+    }

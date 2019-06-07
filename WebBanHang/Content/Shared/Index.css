@@ -23,13 +23,13 @@ a:link, a:visited {
     body {
         display: grid;
         grid-gap: 0px;
-        grid-template-rows: 80px auto 300px;
+        grid-template-rows: 80px auto 300px !important;
     }
 
     nav {
         grid-column: 1;
         grid-row: 1;
-        background-color: #880153;
+        background-color: #4d052d;
         display: flex;
         flex-direction: row;
     }
@@ -41,7 +41,7 @@ a:link, a:visited {
             align-items: center;
         }
 
-        nav ul {
+        nav .menu ul {
             list-style: none;
             text-decoration: none;
             display: flex;
@@ -60,15 +60,25 @@ a:link, a:visited {
                 margin-bottom: 10px;
                 margin-top: 10px;
             }
-
-        nav .logo {
-            background: url('/Image/logo2.png') no-repeat;
-            background-position-x: 80px;
-            margin: 0 auto;
-            height: 80px;
-            width: 400px;
-            background-size: contain;
+        nav .nav-button {
+            width:60px;
+            height:60px;
+            color:white;
+            background-color: #c30075;
+            position:absolute;
+            margin: 10px 0 0 10px;
+            padding:5px 0 0 8px;
+            background-position:10px 10px;
+            border-radius:3px;
         }
+            nav .logo {
+                background: url('/Image/logo2.png') no-repeat;
+                background-position-x: 80px;
+                margin: 0 auto;
+                height: 80px;
+                width: 400px;
+                background-size: contain;
+            }
 
     aside {
         display: none;
@@ -104,17 +114,19 @@ a:link, a:visited {
         }
 }
 
-@media only screen and (max-width : 959px)
+@media only screen and (max-device-width : 959px) and (min-device-width: 481px)
 {
     nav .menu {
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: #000;
     }
 
     nav .logo {
         background: url('/Image/logo2.png') no-repeat;
         background-position-x: 90px;
+        background-position-y: 60px;
         margin: 0 auto;
         width: 600px;
         height: 150px;
@@ -126,10 +138,9 @@ a:link, a:visited {
     }
 
     nav {
-        background-image: url(/Image/bg-header.jpg);
-        background-color: red;
+        background-image: linear-gradient(#000,#4d052d);
         display: grid;
-        grid-template-rows: 100px 220px;
+        grid-template-rows: 50px 150px;
     }
 
         nav ul {
@@ -159,7 +170,7 @@ a:link, a:visited {
                 }
 
                 nav ul li a {
-                    font-size: 16px;
+                    font-size: 13px;
                     font-weight: bold;
                     color: white;
                     text-decoration: none;
@@ -207,16 +218,18 @@ a:link, a:visited {
                 }
 }
 
-@media only screen and (min-width : 960px) {
+@media only screen and (min-device-width : 960px) {
     nav .menu {
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color:#000;
     }
 
     nav .logo {
         background: url('/Image/logo2.png') no-repeat;
         background-position-x: 90px;
+        background-position-y:60px;
         margin: 0 auto;
         width: 600px;
         height: 150px;
@@ -228,10 +241,9 @@ a:link, a:visited {
     }
 
     nav {
-        background-image: url(/Image/bg-header.jpg);
-        background-color: red;
+        background-image: linear-gradient(#000,#4d052d) ;
         display: grid;
-        grid-template-rows: 100px 220px;
+        grid-template-rows: 50px 150px;
     }
 
         nav ul {
@@ -240,6 +252,7 @@ a:link, a:visited {
             display: flex;
             flex-direction: row;
             justify-content: center;
+            margin-bottom:0;
         }
 
             nav ul li {

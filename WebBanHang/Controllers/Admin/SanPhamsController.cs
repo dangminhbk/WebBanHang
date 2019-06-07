@@ -39,6 +39,9 @@ namespace WebBanHang.Controllers.Admin
             var sanPhamsTrang = sanPhams.Skip(skip).Take(take);
             ViewBag.pageCurrent = pageCurrent;
             ViewBag.pageTotal = pageTotal;
+
+            ViewBag.MaDanhMuc = new SelectList(db.DanhMucSanPhams, "MaDanhMuc", "TenDanhMuc");
+            ViewBag.mauSac = new SelectList(Color.mauCoBan, "tenMau", "tenMau");
             return View(sanPhamsTrang);
         }
 
