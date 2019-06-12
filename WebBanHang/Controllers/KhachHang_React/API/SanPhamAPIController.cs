@@ -15,8 +15,11 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
     public class SanPhamAPIController : ApiController
     {
         private WebHoa db = new WebHoa();
-
-        // GET: api/SanPhamAPI
+        /// <summary>
+        /// Tra ve danh sach san pham o trang 
+        /// </summary>
+        /// <param name="page"></param>
+        [HttpGet]
         public List<SanPham_simple> GetSanPhams(int? page)
         {
             int pageT = (int)((page == null) ? 1 : page);
@@ -29,13 +32,23 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
             }
             return ds;
         }
+        /// <summary>
+        /// Tra ve so luong trang toi da
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
         public int SoLuongTrang()
         {
             var count = db.SanPhams.Count();
+            if(count % 9 ==0)
+            {
+                return count / 9;
+            }
             return count / 9 + 1;
         }
 
         // GET: api/SanPhamAPI/5
+        [HttpGet]
         [ResponseType(typeof(SanPham))]
         public IHttpActionResult GetSanPham(int id)
         {

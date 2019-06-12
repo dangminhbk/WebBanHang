@@ -18,7 +18,7 @@ namespace WebBanHang
                 .AddScript("~/View_react/Main.jsx")
                 .AddScript("~/View_react/ItemSanPham.jsx")
                 .AddScript("~/View_react/pagination.jsx")
-                ;
+                .AddScript("~/View_react/PageNum.jsx");
             JsEngineSwitcher.Current.DefaultEngineName = V8JsEngine.EngineName;
             JsEngineSwitcher.Current.EngineFactories.AddV8();
             // If you use an external build too (for example, Babel, Webpack,

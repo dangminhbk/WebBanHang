@@ -216,6 +216,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DangNhap\dangnhap.css" />
+    <Content Include="Content\DanhMuc\react.css" />
     <Content Include="Content\Home\index.css" />
     <Content Include="Content\DanhMuc\index.css" />
     <Content Include="Content\SanPham\sanpham.css" />
@@ -274,6 +275,7 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\react\react-dom.production.min.js" />
+    <Content Include="Scripts\react\react-router.min.js" />
     <Content Include="Scripts\react\react.production.min.js" />
     <Content Include="Scripts\SanPham\Create.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
@@ -282,6 +284,7 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="View_react\ItemSanPham.jsx" />
     <Content Include="View_react\Main.jsx" />
+    <Content Include="View_react\PageNum.jsx" />
     <Content Include="View_react\pagination.jsx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
