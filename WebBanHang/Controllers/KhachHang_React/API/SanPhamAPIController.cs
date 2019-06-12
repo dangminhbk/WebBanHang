@@ -46,8 +46,52 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
             }
             return count / 9 + 1;
         }
-
+        //public List<SanPham_simple> TimKiem(int Page, string DanhMuc, string MauSac, string TenSanPham, int GiaThapNhat, int GiaCaoNhat)
+        //{
+        //    var result = db.DanhMucSanPhams.Find(DanhMuc);
+        //    var ds = new List<SanPham_simple>();
+        //    if (result != null)
+        //    {
+        //        int pageT = (int)((page == null) ? 1 : page);
+        //        foreach (var item in dsSkip)
+        //        {
+        //            ds.Add(new SanPham_simple(item));
+        //        }
+        //    }
+        //    return ds;
+        //}
         // GET: api/SanPhamAPI/5
+        [HttpGet]
+        public List<SanPham_simple> SanPhamDanhMuc(int? page, string DanhMuc)
+        {
+            var result = db.DanhMucSanPhams.Where(item=>item.TenDanhMuc ==DanhMuc).First();
+            var ds = new List<SanPham_simple>();
+            if (result!=null)
+            {
+                int pageT = (int)((page == null) ? 1 : page);
+                var dsSkip = result.SanPhams.ToList().Skip((pageT - 1) * 9).Take(9).ToList();
+                foreach (var item in dsSkip)
+                {
+                    ds.Add(new SanPham_simple(item));
+                }
+            }
+            return ds;
+        }
+        [HttpGet]
+        public int SoLuongTrangTheoDanhMuc(string DanhMuc)
+        {
+            var result = db.DanhMucSanPhams.Where(item => item.TenDanhMuc == DanhMuc).First();
+            var count = 0;
+            if (result!=null)
+            {
+                count = result.SanPhams.Count();
+            }
+            if (count % 9 == 0)
+            {
+                return count / 9;
+            }
+            return count / 9 + 1;
+        }
         [HttpGet]
         [ResponseType(typeof(SanPham))]
         public IHttpActionResult GetSanPham(int id)
