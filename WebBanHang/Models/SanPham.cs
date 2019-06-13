@@ -6,6 +6,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
     [Table("SanPham")]
     public partial class SanPham
@@ -27,6 +28,7 @@
         public string TenSanPham { get; set; }
 
         [DisplayName("Mô tả sản phẩm")]
+        [AllowHtml]
         [Column(TypeName = "xml")]
         public string MoTaSanPham { get; set; }
 

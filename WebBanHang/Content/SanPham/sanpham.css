@@ -1,320 +1,37 @@
-﻿* {
-    box-sizing: border-box;
-    margin: 0;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 16px;
+﻿body {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-rows: 320px auto 300px;
+    grid-template-columns: 1fr;
+    background-color: #fff;
 }
-
-a:link, a:visited {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
+.link-row a{
+    color:black;
 }
-
-main .main-footer .footer-page {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.header{
+    padding-left:80px;
 }
-
-    main .main-footer .footer-page a {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    main .main-footer .footer-page .page-num {
-        display: flex;
-        justify-content: space-around;
-    }
-
-@media only screen and (min-device-width : 300px) and (max-device-width : 480px) {
-    main {
-        color: white;
-        grid-row: 2;
-        background-color: #c30076;
-        display: grid;
-        grid-template-rows: 100px auto 100px;
-        grid-template-columns: 1fr;
-    }
-
-        main .main-header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-            main .main-header * {
-                text-transform:capitalize;
-                text-align: center;
-                font-size: 5rem;
-            }
-
-        main .main-list {
-            grid-gap: 20px;
-            padding-left: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr;
-            list-style: none;
-        }
-
-            main .main-list .sanpham {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-                main .main-list .sanpham .sanpham-name {
-                    text-align: center;
-                }
-
-                main .main-list .sanpham .sanpham-price {
-                    text-align: center;
-                }
-
-
-                main .main-list .sanpham .image-wrap {
-                    width: 220px;
-                    height: 220px;
-                    margin-bottom: 20px;
-                }
-
-                    main .main-list .sanpham .image-wrap .giohang-icon {
-                        width: 80px;
-                        height: 60px;
-                        background-image: url('/Image/icon/giohang.png');
-                        background-color: rgba(0,0,0,0.2);
-                        background-size: contain;
-                        position: absolute;
-                        margin-left: 30px;
-                        margin-top: -120px;
-                    }
-
-                    main .main-list .sanpham .image-wrap .view-icon {
-                        width: 80px;
-                        height: 60px;
-                        background-image: url('/Image/icon/giohang.png');
-                        background-color: rgba(0,0,0,0.2);
-                        background-size: contain;
-                        position: absolute;
-                        margin-left: 120px;
-                        margin-top: -120px;
-                    }
-
-                    main .main-list .sanpham .image-wrap .hidden-icon {
-                        display: block;
-                    }
-
-                main .main-list .sanpham .sanpham-image {
-                    width: 100%;
-                    height: 100%;
-                    transition: all .5s;
-                }
-}
-
-@media only screen and (min-width: 481px) and (max-weight: 1023px) {
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        font-family: 'Varela Round', sans-serif;
-        font-size: 16px;
-    }
-}
-
-
-@media only screen and (min-width : 1024px) {
-    nav {
-        grid-row: 1;
-        grid-column: 1/span 2;
-    }
-
-    footer {
-        grid-row: 3;
-        grid-column: 1 / span 2
-    }
-
-    body {
-        display: grid;
-        grid-gap: 10px;
-        grid-template-rows: 320px auto 300px;
-        grid-template-columns: 200px auto;
-    }
-
-    main {
-        color: white;
-        grid-row: 2;
-        grid-column: 2;
-        background-color: #c30076;
-        display: grid;
-        grid-template-rows: 100px auto 100px;
-        grid-template-columns: 1fr;
-    }
-
-        main .main-header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        main .main-list {
-            grid-gap: 10px;
-            padding-left: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr;
-            list-style: none;
-        }
-
-            main .main-list .sanpham a {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            main .main-list .sanpham .image-wrap {
-                width: 150px;
-                height: 150px;
-                margin-bottom: 20px;
-                transition: all .5s;
-            }
-
-                main .main-list .sanpham .image-wrap .giohang-icon {
-                    width: 40px;
-                    height: 30px;
-                    background-image: url('/Image/icon/giohang.png');
-                    background-color: rgba(0,0,0,0.2);
-                    background-size: contain;
-                    position: absolute;
-                    margin-left: 30px;
-                    margin-top: -60px;
-                }
-
-                main .main-list .sanpham .image-wrap .view-icon {
-                    width: 40px;
-                    height: 30px;
-                    background-image: url('/Image/icon/giohang.png');
-                    background-color: rgba(0,0,0,0.2);
-                    background-size: contain;
-                    position: absolute;
-                    margin-left: 75px;
-                    margin-top: -60px;
-                }
-
-                main .main-list .sanpham .image-wrap .hidden-icon {
-                    display: none;
-                }
-
-            main .main-list .sanpham .sanpham-image {
-                width: 100%;
-                height: 100%;
-                transition: all .5s;
-            }
-
-            main .main-list .sanpham .image-wrap:hover .sanpham-image {
-                transform: scale(1.1);
-            }
-
-            main .main-list .sanpham .image-wrap:hover .hidden-icon + .hidden-icon {
-                display: block;
-            }
-
-            main .main-list .sanpham .image-wrap:hover .hidden-icon {
-                display: block;
-            }
-
-        main .main-footer .footer-page {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-        }
-
-            main .main-footer .footer-page a {
-                margin-left: 20px;
-                margin-right: 20px;
-            }
-
-            main .main-footer .footer-page .page-num {
-                display: flex;
-                justify-content: space-around;
-            }
-
-    aside {
-        grid-row: 2;
-        grid-column: 1;
-        background-color: #c30076;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        padding: 0;
-    }
-
-        aside .header-title {
-            background-color: rgba(0,0,0,0.3);
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 8rem;
-        }
-
-            aside .header-title h3 {
-                text-align: center;
-                font-size: 2rem;
-                color: white;
-                margin-top: 1rem;
-            }
-
-        aside .danhmuc ul {
-            margin: 0;
-            width: 200px;
-            list-style: none;
-            padding-left: 0;
-        }
-
-            aside .danhmuc ul li {
-                padding: 5px 10px 5px 40px;
-            }
-
-                aside .danhmuc ul li:hover {
-                    background-color: rgba(0,0,0,0.4);
-                    color: #c30076;
-                }
-
-        aside .danhmuc a {
-            color: white;
-        }
-
-            aside .danhmuc a:hover {
-            }
-}
-
-.main-content{
-    margin-left:20px;
+.content{
     display:grid;
-    grid-template-columns: minmax(auto, 500px) auto;
-    grid-template-rows: auto auto;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto;
+    width:90vw;
+    margin:auto;
+    border:solid #d5cdcd 1px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:20px;
     grid-gap:10px;
+    border-radius:5px;
 }
-.image-group{
-    grid-row:1;
-    grid-column:1;
-    display:grid;
-    grid-template-columns:50px auto;
-    grid-gap:5px;
+
+.anhSP {
+    border: solid 1px #d5cdcd;
 }
-.sub-image{
-    display:flex;
-    flex-direction:column;
-}
-.sub-image *{
-    object-fit:cover;
-    margin-top:3px;
-    margin-top:3px
-}
-.main-image{
-    width:100%;
-    height:100%;
-}
-.main-content .content{
-    grid-column:1/span 2;
+
+.description {
+    border: solid #d5cdcd 1px;
+    border-radius:5px;
+    grid-column:1/span2;
+
 }

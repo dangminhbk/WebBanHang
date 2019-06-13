@@ -4,84 +4,77 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Main.cshtml";
 }
+@section CSS{
+    <link href="~/Content/SanPham/sanpham.css" rel="stylesheet" />
+}
+    <div class="sp-detail">
+        <div class="header">
+            <div class="link-row"><a href="">@Model.DanhMucSanPham.TenDanhMuc</a> > <a href="">@Model.TenSanPham</a></div>
+            <br />
+            <h3>@Model.TenSanPham</h3>
+        </div>
+        <hr />
+        <div class="content">
 
-<h2>Sản phẩm</h2>
+            <div>
+                <label>Ảnh sản phẩm</label>
+                <br />
+                @foreach (var item in Model.AnhSanPhams)
+                {
+                    <img class="anhSP" style="width:200px;height:200px" src="@item.DuongDanAnh" />
+                }
+            </div>
+            <dl>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DanhMucSanPham.TenDanhMuc)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MauSac)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DanhMucSanPham.TenDanhMuc)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.MauSac)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TenSanPham)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TrongLuong)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenSanPham)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.TrongLuong)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTaSanPham)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.GiaSanPham)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MoTaSanPham)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.GiaSanPham)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MauSac)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.GiaKhuyenMai)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MauSac)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.GiaKhuyenMai)
+                </dd>
+                <dt>
+                    
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TrongLuong)
-        </dt>
+                <dd>
+                    <button class="btn btn-primary">
+                        @Html.ActionLink("Mua", "Add", "Cart", new { id = Model.MaSanPham }, new { })
+                    </button>
+                </dd>
+                
+            </dl>
+            <div class="description">
+                <h4>Thong tin them</h4>
+                <div class="description-info">
+                    @Html.Raw(Model.MoTaSanPham)
+                </div>
+            </div>
+        </div>
+        
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TrongLuong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaSanPham)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaSanPham)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaKhuyenMai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaKhuyenMai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KhuyenMai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KhuyenMai)
-        </dd>
-
-    </dl>
-    <label>Ảnh sản phẩm</label>
-    <br />
-    @foreach (var item in Model.AnhSanPhams)
-    {
-        <img style="width:200px;height:200px" src="@item.DuongDanAnh" />
-    }
-</div>
-<button class="btn btn-primary">
-    @Html.ActionLink("Mua","Add","Cart",new { id = Model.MaSanPham},new { })
-</button>
