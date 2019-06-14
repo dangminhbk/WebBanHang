@@ -209,6 +209,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\antd.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -274,6 +275,9 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\react\antd.min.js" />
+    <Content Include="Scripts\react\index.min.js" />
+    <Content Include="Scripts\react\material-ui.production.min.js" />
     <Content Include="Scripts\react\react-dom.production.min.js" />
     <Content Include="Scripts\react\react-router.min.js" />
     <Content Include="Scripts\react\react.production.min.js" />
