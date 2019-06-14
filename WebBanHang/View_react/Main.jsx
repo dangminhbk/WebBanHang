@@ -10,7 +10,8 @@
             GiaCao: 0,
             searchType: 0,
             pageNum: 1,
-            pageMax: 1
+            pageMax: 1,
+            minPrice:0
         };
         fetch("/api/SanPhamAPI/GetSanPhams?page=1")
             .then(data => {
@@ -25,7 +26,7 @@
         fetch("/api/SanPhamAPI/SoLuongTrang")
             .then(res => res.json())
             .then(data => {
-                this.setState({ pageMax: data })
+                this.setState({ pageMax: data });
             });
     }
     timKiemDanhMuc(danhMuc) {
@@ -86,24 +87,28 @@
             }
         }
     }
+    priceChange()
+    {
+        this.setState({ minPrice: this.refs.minPrice.value });
+    }
     render() {
-
         return (
             <div className="shopping-list">
                 <div className="main-header row">
                     <input type="text" className="form-control col-md-2" placeholder="Tên sản phẩm" />
                     <select className="form-control col-md-2" >
-                        <option>Hoa cưới</option>
-                        <option>Hoa cưới</option>
-                        <option>Hoa cưới</option>
-                        <option>Hoa cưới</option>
+
                     </select>
                     <select className="form-control col-md-2" >
-                        <option>Hoa cưới</option>
-                        <option>Hoa cưới</option>
-                        <option>Hoa cưới</option>
-                        <option>Hoa cưới</option>
+
                     </select>
+                    <div className="col-md-12 row">
+                        <p className="col-md-2">Gia thap nhat</p>
+                        <input className="form-control col-md-4" ref="minPrice" type="range" name="points" min="0" max="1000000" onChange={() => this.priceChange()} />
+                        <p className="col-md-2">Gia thap nhat</p>
+                        <input className="form-control col-md-4" type="range" name="ni" min={this.state.minPrice} max="1000000" />  
+
+                    </div> 
                     <button className="form-control col-md-2 btn btn-primary" type="button" onClick={this.timKiem}>Tim kiếm</button>
                 </div>
                 <ul className="main-list">

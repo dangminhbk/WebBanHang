@@ -10,6 +10,7 @@ using WebBanHang.Models;
 
 namespace WebBanHang.Controllers.Admin
 {
+    [Authorize]
     public class HoaDonsController : Controller
     {
         private WebHoa db = new WebHoa();
