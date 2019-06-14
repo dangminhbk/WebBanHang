@@ -11,6 +11,7 @@ using WebBanHang.Models;
 
 namespace WebBanHang.Controllers.Admin
 {
+    [Authorize]
     public class AnhSanPhamsController : Controller
     {
         private WebHoa db = new WebHoa();
