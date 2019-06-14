@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -40,33 +41,74 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
         public int SoLuongTrang()
         {
             var count = db.SanPhams.Count();
-            if(count % 9 ==0)
+            if (count % 9 == 0)
             {
                 return count / 9;
             }
             return count / 9 + 1;
         }
-        //public List<SanPham_simple> TimKiem(int Page, string DanhMuc, string MauSac, string TenSanPham, int GiaThapNhat, int GiaCaoNhat)
-        //{
-        //    var result = db.DanhMucSanPhams.Find(DanhMuc);
-        //    var ds = new List<SanPham_simple>();
-        //    if (result != null)
-        //    {
-        //        int pageT = (int)((page == null) ? 1 : page);
-        //        foreach (var item in dsSkip)
-        //        {
-        //            ds.Add(new SanPham_simple(item));
-        //        }
-        //    }
-        //    return ds;
-        //}
+        /// <summary>
+        /// Tra ve danh sach san pham theo tieu chi tim
+        /// </summary>
+        /// <param name="Page"></param>
+        /// <param name="DanhMuc"></param>
+        /// <param name="MauSac"></param>
+        /// <param name="TenSanPham"></param>
+        /// <param name="GiaThapNhat"></param>
+        /// <param name="GiaCaoNhat"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public List<SanPham_simple> TimKiem(int? Page, int DanhMuc, string MauSac, string TenSanPham, int GiaThapNhat, int GiaCaoNhat)
+        {
+            // Tim kiem bang query thuan
+            string sqlQuery = "select * from SanPham where SanPham.MaDanhMuc = @maDanhMuc and MauSac = @mauSac and GiaSanPham< @maxGia and GiaSanPham > @minGia and TenSanPham like @ten ";
+            object[] paramList =  {
+                new SqlParameter{
+                    ParameterName = "@maDanhMuc",
+                    SqlDbType = SqlDbType.Int,
+                    Value = DanhMuc,
+                },
+                new SqlParameter{
+                    ParameterName = "@mauSac",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Value = MauSac,
+                },
+                new SqlParameter{
+                    ParameterName = "@maxGia",
+                    SqlDbType = SqlDbType.Int,
+                    Value = GiaCaoNhat,
+                },
+                new SqlParameter{
+                    ParameterName = "@minGia",
+                    SqlDbType = SqlDbType.Int,
+                    Value = GiaThapNhat,
+                },
+                new SqlParameter{
+                    ParameterName = "@ten",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Value = "%"+TenSanPham+"%",
+                }
+            };
+            var result = db.SanPhams.SqlQuery(sqlQuery,paramList).ToList<SanPham>();
+            var ds = new List<SanPham_simple>();
+            if (result != null)
+            {
+                int pageT = (int)((Page == null) ? 1 : Page);
+                var dsSkip = result.Skip((pageT - 1) * 9).Take(9).ToList();
+                foreach (var item in dsSkip)
+                {
+                    ds.Add(new SanPham_simple(item));
+                }
+            }
+            return ds;
+        }
         // GET: api/SanPhamAPI/5
         [HttpGet]
         public List<SanPham_simple> SanPhamDanhMuc(int? page, string DanhMuc)
         {
-            var result = db.DanhMucSanPhams.Where(item=>item.TenDanhMuc ==DanhMuc).First();
+            var result = db.DanhMucSanPhams.Where(item => item.TenDanhMuc == DanhMuc).First();
             var ds = new List<SanPham_simple>();
-            if (result!=null)
+            if (result != null)
             {
                 int pageT = (int)((page == null) ? 1 : page);
                 var dsSkip = result.SanPhams.ToList().Skip((pageT - 1) * 9).Take(9).ToList();
@@ -82,7 +124,7 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
         {
             var result = db.DanhMucSanPhams.Where(item => item.TenDanhMuc == DanhMuc).First();
             var count = 0;
-            if (result!=null)
+            if (result != null)
             {
                 count = result.SanPhams.Count();
             }
@@ -103,6 +145,6 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
             }
 
             return Ok(sanPham);
-        }        
+        }
     }
 }
