@@ -1,0 +1,19 @@
+﻿@model List<WebBanHang.Models.DanhMucSanPham>
+<aside>
+    <div class="header-title">
+        <h3> Danh muc </h3>
+    </div>
+    <div class="Danh mục">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="#" onclick="window.cuaHang.timKiemDanhMuc('@item.TenDanhMuc')">@item.TenDanhMuc</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="filter">
+        <ul class="filter-list"></ul>
+    </div>
+</aside>

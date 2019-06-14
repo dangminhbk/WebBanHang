@@ -1,0 +1,224 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 16px;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+body {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-rows: 320px auto 300px;
+    grid-template-columns: 200px auto;
+    background-color: #fff;
+}
+
+nav {
+    grid-column: 1/ span 2;
+    grid-row: 1;
+}
+
+main {
+    color: black;
+    grid-row: 2;
+    grid-column: 2;
+}
+main .shopping-list .main-header {
+    
+    margin-left:100px;
+}
+    main .shopping-list .main-header * {
+        margin-left:5px;
+    }
+    main .shopping-list {
+        display: grid;
+        grid-template-rows: 80px auto 80px;
+        grid-template-columns: 1fr;
+    }
+
+    main .shopping-list .main-list {
+        grid-column-gap: 60px;
+        grid-row-gap:30px;
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        list-style: none;
+        padding-left:30px;
+        padding-right:30px;
+    }
+
+    main .main-list .sanpham {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: black;
+        border: solid 1px white;
+    }
+            main .main-list .sanpham:hover{
+                background-color:rgba(0,0,0,0.2);
+                border:solid 1px grey;
+            }
+            main .main-list .sanpham a {
+                margin-top:20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+            }
+            main .main-list .sanpham .image-wrap {
+                width: 150px;
+                height: 150px;
+                margin-right: 0px;
+                transition: all .5s;
+            }
+                main .main-list .sanpham .image-wrap img{
+                    width:100%;
+                    height:100%;
+                }
+                main .main-list .sanpham .image-wrap .giohang-icon {
+                    width: 40px;
+                    height: 30px;
+                    background-image: url('/Image/icon/giohang.png');
+                    background-color: rgba(0,0,0,0.2);
+                    background-size: contain;
+                    position: absolute;
+                    margin-left: 30px;
+                    margin-top: -60px;
+                }
+
+                main .main-list .sanpham .image-wrap .view-icon {
+                    width: 40px;
+                    height: 30px;
+                    background-image: url('/Image/icon/giohang.png');
+                    background-color: rgba(0,0,0,0.2);
+                    background-size: contain;
+                    position: absolute;
+                    margin-left: 75px;
+                    margin-top: -60px;
+                }
+
+    main .shopping-list .main-list .sanpham .image-wrap .hidden-icon {
+        display: none;
+    }
+
+    main .shopping-list .main-list .sanpham .sanpham-name {
+        color: black;
+    }
+
+    main .shopping-list .main-list .sanpham .sanpham-price {
+        color: black;
+    }
+
+aside {
+    grid-row: 2;
+    grid-column: 1;
+    background-color: #710d44;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 0;
+    box-shadow: 1px 2px 5px;
+    z-index: 2;
+    height: 500px;
+}
+
+    aside .header-title {
+        background-color: rgba(0,0,0,0.3);
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 8rem;
+    }
+
+        aside .header-title h3 {
+            text-align: center;
+            font-size: 2rem;
+            color: white;
+            margin-top: 1rem;
+        }
+
+    aside .danhmuc ul {
+        margin: 0;
+        width: 200px;
+        list-style: none;
+        padding-left: 0;
+    }
+
+        aside .danhmuc ul li {
+            padding: 5px 10px 5px 40px;
+        }
+
+            aside .danhmuc ul li:hover {
+                background-color: rgba(0,0,0,0.4);
+                color: #c30076;
+            }
+
+    aside .danhmuc a {
+        text-transform: uppercase;
+        color: white;
+    }
+
+        aside .danhmuc a:hover {
+        }
+
+footer {
+    grid-row: 3;
+    grid-column: 1/ span 2;
+    border-top: solid 2px white;
+    background-color: #4d052d;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: row;
+}
+
+    footer .footer-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        footer .footer-left .info-wrap {
+            display: flex;
+            flex-direction: column;
+            color: white;
+            font-size: 1.4rem;
+        }
+
+    footer .footer-right {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+        footer .footer-right ul {
+            margin-right: 30px;
+            list-style: none;
+            font-size: 1.4rem;
+            color: white;
+        }
+
+            footer .footer-right ul li a {
+                color: white;
+                text-decoration: none;
+            }
+
+.page-item .page-link {
+    color: black;
+}
+.page-item.active .page-link {
+    color:white;
+    background-color: #710d44;
+    border-color: #710d44;
+}
+
+.pagination-wrap{
+    margin:auto;
+}

@@ -322,3 +322,12 @@ a:link, a:visited {
                 }
 }
 
+
+.btn-primary {
+    background-color: #710d44;
+    border-color: #710d44;
+}
+.btn-primary:hover {
+    background-color: #710d44;
+    border-color: #710d44;
+}

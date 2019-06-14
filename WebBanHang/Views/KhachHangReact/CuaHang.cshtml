@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "CuaHang";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+@Html.Action("AsidePartial")
+<main id="react-view">
+
+</main>
+@section CSS{
+    <link href="~/Content/antd.min.css" rel="stylesheet" />
+    <link href="~/Content/DanhMuc/react.css" rel="stylesheet" />
+
+}
+@section Scripts{
+    <script src="~/Scripts/react/react.production.min.js"></script>
+    <script src="~/Scripts/react/react-dom.production.min.js"></script>
+    <script src="~/View_react/ItemSanPham.jsx"></script>
+    <script src="~/View_react/PageNum.jsx"></script>
+    <script src="~/View_react/pagination.jsx"></script>
+    <script src="~/View_react/Main.jsx"></script>
+}
