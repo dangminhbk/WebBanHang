@@ -8,7 +8,7 @@
             @foreach (var item in Model)
             {
                 <li>
-                    @Html.ActionLink(item.TenDanhMuc, "Index",new { danhMuc = item.MaDanhMuc})
+                    <a href="#" onclick="window.cuaHang.timKiemDanhMuc('@item.TenDanhMuc')">@item.TenDanhMuc</a>
                 </li>
             }
         </ul>
