@@ -28,17 +28,20 @@ main {
     grid-row: 2;
     grid-column: 2;
 }
-main .shopping-list .main-header {
-    
-    margin-left:100px;
-}
+    main .shopping-list .main-header {
+        padding-left: 100px;
+        margin-left:20px;
+        border-bottom: solid 1px #710d44;
+        max-width:1024px;
+    }
     main .shopping-list .main-header * {
         margin-left:5px;
     }
     main .shopping-list {
         display: grid;
-        grid-template-rows: 80px auto 80px;
+        grid-template-rows: 140px auto 80px;
         grid-template-columns: 1fr;
+        grid-gap:5px;
     }
 
     main .shopping-list .main-list {
@@ -147,7 +150,7 @@ aside {
     aside .danhmuc ul {
         margin: 0;
         width: 200px;
-        list-style: none;
+        list-style: none !important;
         padding-left: 0;
     }
 
@@ -221,4 +224,44 @@ footer {
 
 .pagination-wrap{
     margin:auto;
+}
+.slider-wrap{
+    display:grid;
+    grid-template-columns:140px 300px 100px;
+}
+.slider {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 100%;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 10px;
+}
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border-radius: 50%;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #710d44;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+    }
+
+.price-row{
+    margin-top:-20px;
 }

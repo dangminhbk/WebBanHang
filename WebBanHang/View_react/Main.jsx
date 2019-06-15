@@ -11,7 +11,9 @@
             searchType: 0,
             pageNum: 1,
             pageMax: 1,
-            minPrice:0
+            minPrice: 0,
+            maxPrice: 0
+
         };
         fetch("/api/SanPhamAPI/GetSanPhams?page=1")
             .then(data => {
@@ -87,29 +89,42 @@
             }
         }
     }
-    priceChange()
-    {
+    priceChange() {
+        if (this.refs.minPrice.value > this.refs.maxPrice.value)
+        {
+            this.refs.maxPrice.value = this.refs.minPrice.value;
+        }
         this.setState({ minPrice: this.refs.minPrice.value });
+        this.setState({ maxPrice: this.refs.maxPrice.value });
     }
     render() {
         return (
             <div className="shopping-list">
                 <div className="main-header row">
-                    <input type="text" className="form-control col-md-2" placeholder="Tên sản phẩm" />
+                    <input type="text" className="form-control col-md-3" placeholder="Tên sản phẩm" />
                     <select className="form-control col-md-2" >
+                        <option>Hoa đám cưới</option>
+                        <option>Hoa đám ma</option>
+                        <option>Điện hoa</option>
+                        <option>Hoa sinh nhật</option>
 
                     </select>
                     <select className="form-control col-md-2" >
 
                     </select>
-                    <div className="col-md-12 row">
-                        <p className="col-md-2">Gia thap nhat</p>
-                        <input className="form-control col-md-4" ref="minPrice" type="range" name="points" min="0" max="1000000" onChange={() => this.priceChange()} />
-                        <p className="col-md-2">Gia thap nhat</p>
-                        <input className="form-control col-md-4" type="range" name="ni" min={this.state.minPrice} max="1000000" />  
-
-                    </div> 
                     <button className="form-control col-md-2 btn btn-primary" type="button" onClick={this.timKiem}>Tim kiếm</button>
+                    <div className="col-md-12 price-row">
+                        <div className="col-md-12 slider-wrap">
+                            <label>Gia thấp nhất</label>
+                            <input step={1000} ref="minPrice" className="slider" type="range" min={0} max={1000000} onChange={() => this.priceChange()} />
+                            <label>{this.state.minPrice} vnd</label>   
+                        </div>
+                        <div className="col-md-12 slider-wrap">
+                            <label>Giá cáo nhất</label>   
+                            <input step={1000} ref="maxPrice" className="slider" type="range" min={this.state.minPrice} max={1000000} onChange={() => this.priceChange()} />
+                            <label>{this.state.maxPrice} vnd</label>   
+                        </div>
+                    </div>
                 </div>
                 <ul className="main-list">
                     {this.state.data.map(item => <ItemSanPham item={item} />)}
