@@ -7,96 +7,104 @@
     Cart cart = (Cart)ViewBag.Cart;
     var tongTien = 0;
 }
+@section CSS{
+    <style>
+        .main {
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-bottom: 30px;
+        }
+    </style>
+}
+<div class="main">
+    <hr />
 
-<hr />
+    @using (Html.BeginForm("Create", "HoaDons", "POST"))
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Thông tin thanh toán</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.DiaChiNguoiNhan, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DiaChiNguoiNhan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DiaChiNguoiNhan, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <h4>Thông tin thanh toán</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.DiaChiNguoiNhan, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DiaChiNguoiNhan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DiaChiNguoiNhan, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenKhachHang, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenKhachHang, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenKhachHang, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.TenKhachHang, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenKhachHang, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenKhachHang, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-        <hr />
-        <div>
-            <table class="table table-bordered">
-                <tr>
-                    <td>
-                        Đơn giá
-                    </td>
-                    <td>
-                        Tên sản phẩm
-                    </td>
-                    <td>
-                        Số lượng
-                    </td>
-                    <td>
-                        Tổng tiền
-                    </td>
-                </tr>
-                @foreach (var item in cart.Details)
-                {
-                    var tongRieng = item.Price * item.Amount;
-                    tongTien += tongRieng;
+            <hr />
+            <div>
+                <table class="table">
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Price)
+                            Đơn giá
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            Tên sản phẩm
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Amount)
+                            Số lượng
                         </td>
                         <td>
-                            @tongRieng vnd
+                            Tổng tiền
                         </td>
                     </tr>
+                    @foreach (var item in cart.Details)
+                    {
+                        var tongRieng = item.Price * item.Amount;
+                        tongTien += tongRieng;
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td>
+                                @tongRieng vnd
+                            </td>
+                        </tr>
 
-                }
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        Tổng:
-                    </td>
-                    <td>@tongTien vnd</td>
-                </tr>
-            </table>
-            
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Thanh toán" class="btn btn-primary" />
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            Tổng:
+                        </td>
+                        <td>@tongTien vnd</td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Thanh toán" class="btn btn-primary" />
+                </div>
             </div>
         </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    }
 </div>
+
+

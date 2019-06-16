@@ -14,8 +14,9 @@ a:link, a:visited {
 body {
     display:grid;
     grid-template-columns: minmax(100px, 200px) auto;
-    grid-template-rows:100vh;
+    grid-template-rows:min-content;
     grid-gap:10px;
+
 }
 aside a:link, a:visited {
     color: white;
@@ -23,7 +24,7 @@ aside a:link, a:visited {
 }
 aside{
     min-height:100vh;
-    height:800px;
+    height:100%;
     background-color:#4d054d;
     display:flex;
     flex-direction:column;
@@ -87,7 +88,10 @@ aside .bottom
         margin-right:1px;
     }
 main{
+    margin-top:10px;
+    padding-left:30px;
     background-color:white;
+    padding-top:50px;
 }
 thead{
     background-color:dimgrey;

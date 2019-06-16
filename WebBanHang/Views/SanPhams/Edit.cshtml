@@ -6,14 +6,12 @@
     var danhSachMau = (List<Color>)ViewBag.MauSac;
 }
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "SanPhams", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>SanPham</h4>
+    <h4>Sản phẩm</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.MaSanPham)
@@ -96,12 +94,14 @@
             <input type="file" name="anhSP" multiple value="" />
         </div>
     </div>
+    <hr />
     <div>
         @foreach (AnhSanPham item in (List<AnhSanPham>)ViewBag.anhSP)
         {
-            <img width="120" height="120" src="@item.DuongDanAnh"/>
+            <img onclick="JS:editPhoto('@item.MaSanPham','@item.DuongDanAnh')" width="120" height="120" src="@item.DuongDanAnh" />
         }
     </div>
+    <hr />
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Save" class="btn btn-primary" />
@@ -111,5 +111,8 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-primary">
+        @Html.ActionLink("Trở lại", "Index")
+    </button>
 </div>
+

@@ -10,14 +10,36 @@ using WebBanHang.Models;
 
 namespace WebBanHang.Controllers.Admin
 {
+    [Authorize]
     public class HoaDonsController : Controller
     {
         private WebHoa db = new WebHoa();
 
         // GET: HoaDons
-        public ActionResult Index()
+        public ActionResult Index(int? page, int? pageSize)
         {
-            return View(db.HoaDons.ToList());
+            int skip = 0;
+            int take = 0;
+            int pageCurrent = 1;
+            int pageTotal = 1;
+            if (page != null && pageSize != null)
+            {
+                pageCurrent = (int)page;
+                skip = ((int)page - 1) * (int)pageSize;
+                take = (int)pageSize;
+            }
+            else
+            {
+                skip = 0;
+                take = 7;
+            }
+
+            var sanPhams = db.HoaDons.ToList();
+            pageTotal = sanPhams.Count() / take + 1;
+            var sanPhamsTrang = sanPhams.Skip(skip).Take(take);
+            ViewBag.pageCurrent = pageCurrent;
+            ViewBag.pageTotal = pageTotal;
+            return View(sanPhamsTrang);
         }
 
         // GET: HoaDons/Details/5
@@ -44,12 +66,30 @@ namespace WebBanHang.Controllers.Admin
         // POST: HoaDons/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaHoaDon,NgaySuatHoaDon,ThanhToan,DiaChiNguoiNhan,SoDienThoai,DonViGiaoHang,MaVanDon,TongTien,TenKhachHang")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
+                Cart cart = (Cart)Session["Cart"];
+                int TongTien = 0;
+                foreach (var item in cart.Details)
+                {
+                    var chiTiet = new SanPham_HoaDon {
+                        SoLuong = item.Amount,
+                        MaSanPham = item.Id,
+                        Gia = item.Price
+                    };
+                    TongTien += item.Price * item.Amount;
+                    hoaDon.SanPham_HoaDon.Add(chiTiet);
+                }
+                hoaDon.TongTien = TongTien;
+                hoaDon.ThanhToan = "Chưa thanh toán";
+                hoaDon.DonViGiaoHang = "Chưa có";
+                hoaDon.MaVanDon = "Chưa có";
+                hoaDon.NgaySuatHoaDon = DateTime.Now;
                 db.HoaDons.Add(hoaDon);
                 db.SaveChanges();
                 return RedirectToAction("Index");

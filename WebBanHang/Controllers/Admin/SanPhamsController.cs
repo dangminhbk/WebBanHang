@@ -78,16 +78,19 @@ namespace WebBanHang.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
-                foreach (var item in anhSP)
+                if (anhSP.Count() >0)
                 {
-                    if(item.ContentLength >0)
+                    foreach (var item in anhSP)
                     {
-                        var filename = Path.GetRandomFileName()+Path.GetExtension(item.FileName);
-                        var path = Path.Combine(Server.MapPath("~/Uploaded"), filename);
-                        var pathDisplay = "/Uploaded/" + filename;
-                        item.SaveAs(path);
-                        var anhspTemp = new AnhSanPham { DuongDanAnh = pathDisplay };
-                        sanPham.AnhSanPhams.Add(anhspTemp);
+                        if (item.ContentLength > 0)
+                        {
+                            var filename = Path.GetRandomFileName() + Path.GetExtension(item.FileName);
+                            var path = Path.Combine(Server.MapPath("~/Uploaded"), filename);
+                            var pathDisplay = "/Uploaded/" + filename;
+                            item.SaveAs(path);
+                            var anhspTemp = new AnhSanPham { DuongDanAnh = pathDisplay };
+                            sanPham.AnhSanPhams.Add(anhspTemp);
+                        }
                     }
                 }
                 db.SanPhams.Add(sanPham);
@@ -122,10 +125,25 @@ namespace WebBanHang.Controllers.Admin
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSanPham,TenSanPham,MoTaSanPham,MauSac,TrongLuong,GiaSanPham,GiaKhuyenMai,KhuyenMai,MaDanhMuc")] SanPham sanPham)
+        public ActionResult Edit([Bind(Include = "MaSanPham,TenSanPham,MoTaSanPham,MauSac,TrongLuong,GiaSanPham,GiaKhuyenMai,KhuyenMai,MaDanhMuc")] SanPham sanPham, HttpPostedFileBase[] anhSP)
         {
             if (ModelState.IsValid)
             {
+                if (anhSP.Count() >0)
+                {
+                    foreach (var item in anhSP)
+                    {
+                        if (item.ContentLength > 0)
+                        {
+                            var filename = Path.GetRandomFileName() + Path.GetExtension(item.FileName);
+                            var path = Path.Combine(Server.MapPath("~/Uploaded"), filename);
+                            var pathDisplay = "/Uploaded/" + filename;
+                            item.SaveAs(path);
+                            var anhspTemp = new AnhSanPham { DuongDanAnh = pathDisplay,MaSanPham = sanPham.MaSanPham };
+                            db.AnhSanPhams.Add(anhspTemp);
+                        }
+                    }
+                }
                 db.Entry(sanPham).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

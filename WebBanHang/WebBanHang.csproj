@@ -352,6 +352,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\KhachHangReact\AsidePartial.cshtml" />
     <Content Include="Views\ThanhToan\Index.cshtml" />
+    <Content Include="Views\AnhSanPhams\EditMini.cshtml" />
+    <Content Include="Views\AnhSanPhams\Blank.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

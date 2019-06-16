@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Danh sách hóa đơn</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.NgaySuatHoaDon)
@@ -65,12 +65,61 @@
         <td>
             @Html.DisplayFor(modelItem => item.TenKhachHang)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaHoaDon }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaHoaDon }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaHoaDon })
+        <td >
+            <button class="btn btn-primary">
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaHoaDon })
+            </button>
+            <button class="btn btn-primary">
+                @Html.ActionLink("Details", "Details", new { id = item.MaHoaDon })
+            </button>
+
         </td>
     </tr>
 }
 
 </table>
+
+<div class="pager">
+    @if (@ViewBag.pageCurrent == 1 && ViewBag.pageTotal == 1)
+    {
+        <div class="pager-num">
+            Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
+        </div>
+    }
+    else
+    {
+        if (ViewBag.pageCurrent == 1)
+        {
+            <button class="btn btn-primary">
+                @Html.ActionLink("Next", "Index", new { page = (int)ViewBag.pageCurrent + 1, pageSize = 7 })
+            </button>
+            <div class="pager-num">
+                Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
+            </div>
+        }
+        else
+        {
+            if (ViewBag.pageCurrent == ViewBag.pageTotal)
+            {
+                <div class="pager-num">
+                    Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
+                </div>
+                <button class="btn btn-primary">
+                    @Html.ActionLink("Prev", "Index", new { page = (int)ViewBag.pageCurrent - 1, pageSize = 7 })
+                </button>
+            }
+            else
+            {
+                <button class="btn btn-primary">
+                    @Html.ActionLink("Next", "Index", new { page = (int)ViewBag.pageCurrent + 1, pageSize = 7 })
+                </button>
+                <div class="pager-num">
+                    Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
+                </div>
+                <button class="btn btn-primary">
+                    @Html.ActionLink("Prev", "Index", new { page = (int)ViewBag.pageCurrent - 1, pageSize = 7 })
+                </button>
+            }
+        }
+    }
+</div>
