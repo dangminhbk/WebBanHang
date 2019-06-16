@@ -25,6 +25,11 @@
             .catch(error => {
                 console.error(error);
             });
+
+        function editPhoto(id, src)
+        {
+            window.open(`/AnhSanPhams/EditMini?masp=${id}&duongdan=${src}`, 'new', 'width=560,height=340,toolbar=0,menubar=0,location=0');
+        }
     </script>
 </body>
 </html>

@@ -10,7 +10,11 @@ a:link, a:visited {
     text-decoration: none;
     cursor: pointer;
 }
-
+body {
+    display: grid;
+    grid-gap: 0px;
+    grid-template-rows: 320px auto 300px;
+}
 @media only screen and (max-device-width : 480px)
 {
     * {

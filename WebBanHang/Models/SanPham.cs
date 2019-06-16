@@ -29,7 +29,6 @@
 
         [DisplayName("Mô tả sản phẩm")]
         [AllowHtml]
-        [Column(TypeName = "xml")]
         public string MoTaSanPham { get; set; }
 
         [StringLength(50)]
