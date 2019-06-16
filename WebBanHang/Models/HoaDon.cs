@@ -20,6 +20,7 @@
         public int MaHoaDon { get; set; }
         [DisplayName("Ngày xuất")]
         [Column(TypeName = "date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? NgaySuatHoaDon { get; set; }
         [DisplayName("Thanh toán")]
         [StringLength(100)]

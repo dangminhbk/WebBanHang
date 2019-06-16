@@ -227,6 +227,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\bg-header.jpg" />
+    <Content Include="Image\ne.jpg" />
     <Content Include="Image\icon\giohang.png" />
     <Content Include="Image\logo2.png" />
     <Content Include="Image\logo.png" />
@@ -352,6 +353,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\KhachHangReact\AsidePartial.cshtml" />
     <Content Include="Views\ThanhToan\Index.cshtml" />
+    <Content Include="Views\AnhSanPhams\EditMini.cshtml" />
+    <Content Include="Views\AnhSanPhams\Blank.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

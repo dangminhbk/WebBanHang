@@ -38,18 +38,24 @@ namespace WebBanHang.Models
                 });
             }
         }
-        public void UpdateAmount(CartDetail cd, int change)
+        public void UpdateAmount(int id, int change)
         {
-            if(change <=0)
+            foreach (var item in Details)
             {
-                Details.Remove(cd);
-                return;
+                if (item.Id == id)
+                {
+                    if(change==0)
+                    {
+                        Details.Remove(item);
+                        return;
+                    }
+                    item.Amount = change;
+                }
             }
-            cd.Amount = change;
         }
-        public void deleteItem(CartDetail cd)
+        public void deleteItem(int id)
         {
-            UpdateAmount(cd, 0);
+            UpdateAmount(id, 0);
         }
         public int TongTien()
         {

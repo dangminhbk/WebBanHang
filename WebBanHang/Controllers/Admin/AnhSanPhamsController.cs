@@ -78,7 +78,20 @@ namespace WebBanHang.Controllers.Admin
             ViewBag.MaSanPham = new SelectList(db.SanPhams, "MaSanPham", "TenSanPham", anhSanPham.MaSanPham);
             return View(anhSanPham);
         }
-
+        public ActionResult EditMini(int? masp, string duongdan)
+        {
+            if (masp == null || duongdan == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AnhSanPham anhSanPham = db.AnhSanPhams.Find(masp, duongdan);
+            if (anhSanPham == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.MaSanPham = new SelectList(db.SanPhams, "MaSanPham", "TenSanPham", anhSanPham.MaSanPham);
+            return View(anhSanPham);
+        }
         // POST: AnhSanPhams/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -89,7 +102,7 @@ namespace WebBanHang.Controllers.Admin
             
             if (ModelState.IsValid)
             {
-                if(anhMoi.ContentLength >0)
+                if(anhMoi!=null && anhMoi.ContentLength >0 )
                 {
                     var filename = Path.GetRandomFileName() + Path.GetExtension(anhMoi.FileName);
                     var path = Path.Combine(Server.MapPath("~/Uploaded"), filename);
@@ -108,7 +121,32 @@ namespace WebBanHang.Controllers.Admin
             ViewBag.MaSanPham = new SelectList(db.SanPhams, "MaSanPham", "TenSanPham", anhSanPham.MaSanPham);
             return View(anhSanPham);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditMini([Bind(Include = "MaSanPham,DuongDanAnh")] AnhSanPham anhSanPham, HttpPostedFileBase anhMoi)
+        {
 
+            if (ModelState.IsValid)
+            {
+                if (anhMoi != null && anhMoi.ContentLength > 0)
+                {
+                    var filename = Path.GetRandomFileName() + Path.GetExtension(anhMoi.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Uploaded"), filename);
+                    var pathDisplay = "/Uploaded/" + filename;
+                    anhMoi.SaveAs(path);
+
+                    AnhSanPham anhNew = new AnhSanPham { DuongDanAnh = pathDisplay, MaSanPham = anhSanPham.MaSanPham };
+
+                    var anhCu = db.AnhSanPhams.Find(anhSanPham.MaSanPham, anhSanPham.DuongDanAnh);
+                    db.AnhSanPhams.Remove(anhCu);
+                    db.AnhSanPhams.Add(anhNew);
+                    db.SaveChanges();
+                }
+                return View("Blank");
+            }
+            ViewBag.MaSanPham = new SelectList(db.SanPhams, "MaSanPham", "TenSanPham", anhSanPham.MaSanPham);
+            return View("EditMini",anhSanPham);
+        }
         // GET: AnhSanPhams/Delete/5
         public ActionResult Delete(int? masp, string duongdan)
         {

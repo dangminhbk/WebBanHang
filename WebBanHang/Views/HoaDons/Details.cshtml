@@ -3,12 +3,11 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Admin.cshtml";
+    int tongTien = 0;
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>HoaDon</h4>
+    <h4>Chi tiết hóa đơn</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -76,8 +75,57 @@
         </dd>
 
     </dl>
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                Đơn giá
+            </td>
+            <td>
+                Tên sản phẩm
+            </td>
+            <td>
+                Số lượng
+            </td>
+            <td>
+                Tổng tiền
+            </td>
+        </tr>
+        @foreach (var item in Model.SanPham_HoaDon)
+        {
+            var tongRieng = item.Gia * item.SoLuong;
+            tongTien += (int)tongRieng;
+            <tr>
+                <td>
+                    @item.Gia
+                </td>
+                <td>
+                    @item.SanPham.TenSanPham
+                </td>
+                <td>
+                    @item.SoLuong
+                </td>
+                <td>
+                    @tongRieng vnd
+                </td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                Tổng:
+            </td>
+            <td>@tongTien vnd</td>
+        </tr>
+    </table>
+   
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHoaDon }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-primary">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaHoaDon })
+    </button>
+    <button class="btn btn-primary">
+        @Html.ActionLink("Quay lại", "Index")
+    </button>
+
 </p>
