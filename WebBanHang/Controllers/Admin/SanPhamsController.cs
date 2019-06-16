@@ -78,11 +78,11 @@ namespace WebBanHang.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
-                if (anhSP.Count() >0)
+                if (anhSP != null && anhSP.Count() >0)
                 {
                     foreach (var item in anhSP)
                     {
-                        if (item.ContentLength > 0)
+                        if (item != null && item.ContentLength > 0)
                         {
                             var filename = Path.GetRandomFileName() + Path.GetExtension(item.FileName);
                             var path = Path.Combine(Server.MapPath("~/Uploaded"), filename);
@@ -129,11 +129,12 @@ namespace WebBanHang.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
-                if (anhSP.Count() >0)
+                if (anhSP != null && anhSP.Count() > 0)
                 {
                     foreach (var item in anhSP)
                     {
-                        if (item.ContentLength > 0)
+
+                        if (item!=null&&item.ContentLength > 0)
                         {
                             var filename = Path.GetRandomFileName() + Path.GetExtension(item.FileName);
                             var path = Path.Combine(Server.MapPath("~/Uploaded"), filename);

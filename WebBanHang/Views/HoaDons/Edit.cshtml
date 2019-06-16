@@ -5,14 +5,12 @@
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h2>Edit</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>HoaDon</h4>
+        <h4>Thay đổi hóa đơn</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.MaHoaDon)

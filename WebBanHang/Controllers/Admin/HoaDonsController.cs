@@ -66,7 +66,6 @@ namespace WebBanHang.Controllers.Admin
         // POST: HoaDons/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaHoaDon,NgaySuatHoaDon,ThanhToan,DiaChiNguoiNhan,SoDienThoai,DonViGiaoHang,MaVanDon,TongTien,TenKhachHang")] HoaDon hoaDon)

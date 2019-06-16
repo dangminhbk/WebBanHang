@@ -227,6 +227,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\bg-header.jpg" />
+    <Content Include="Image\ne.jpg" />
     <Content Include="Image\icon\giohang.png" />
     <Content Include="Image\logo2.png" />
     <Content Include="Image\logo.png" />
