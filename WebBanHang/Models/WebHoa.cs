@@ -17,12 +17,10 @@ namespace WebBanHang.Models
         public virtual DbSet<DanhMucBaiViet> DanhMucBaiViets { get; set; }
         public virtual DbSet<DanhMucSanPham> DanhMucSanPhams { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
-        public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<SanPham_HoaDon> SanPham_HoaDon { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<TinNhan> TinNhans { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -41,25 +39,6 @@ namespace WebBanHang.Models
             modelBuilder.Entity<HoaDon>()
                 .HasMany(e => e.SanPham_HoaDon)
                 .WithRequired(e => e.HoaDon)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<HoaDon>()
-                .HasMany(e => e.KhachHangs)
-                .WithMany(e => e.HoaDons)
-                .Map(m => m.ToTable("KhachHang_HoaDon").MapLeftKey("MaHoaDon").MapRightKey("MaKhachHang"));
-
-            modelBuilder.Entity<HoaDon>()
-                .HasMany(e => e.NhanViens)
-                .WithMany(e => e.HoaDons)
-                .Map(m => m.ToTable("NhanVien_HoaDon").MapLeftKey("MaHoaDon").MapRightKey("MaNhanVien"));
-
-            modelBuilder.Entity<KhachHang>()
-                .Property(e => e.matKhau)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.TinNhans)
-                .WithRequired(e => e.KhachHang)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<NhanVien>()

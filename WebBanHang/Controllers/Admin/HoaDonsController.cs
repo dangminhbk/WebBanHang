@@ -10,35 +10,14 @@ using WebBanHang.Models;
 
 namespace WebBanHang.Controllers.Admin
 {
-    [Authorize]
     public class HoaDonsController : Controller
     {
         private WebHoa db = new WebHoa();
 
         // GET: HoaDons
-        public ActionResult Index(int? page, int? pageSize)
+        public ActionResult Index()
         {
-            int skip = 0;
-            int take = 0;
-            int pageCurrent = 1;
-            int pageTotal = 1;
-            if (page != null && pageSize != null)
-            {
-                pageCurrent = (int)page;
-                skip = ((int)page - 1) * (int)pageSize;
-                take = (int)pageSize;
-            }
-            else
-            {
-                skip = 0;
-                take = 7;
-            }
-            var hoaDons = db.HoaDons.ToList();
-            pageTotal = hoaDons.Count() / take + 1;
-            var hoaDonTrang = hoaDons.Skip(skip).Take(take);
-            ViewBag.pageCurrent = pageCurrent;
-            ViewBag.pageTotal = pageTotal;
-            return View(hoaDonTrang);
+            return View(db.HoaDons.ToList());
         }
 
         // GET: HoaDons/Details/5
@@ -67,7 +46,7 @@ namespace WebBanHang.Controllers.Admin
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHoaDon,NgaySuatHoaDon,ThanhToan,DiaChiNguoiNhan,SoDienThoai,DonViGiaoHang,MaVanDon,TongTien")] HoaDon hoaDon)
+        public ActionResult Create([Bind(Include = "MaHoaDon,NgaySuatHoaDon,ThanhToan,DiaChiNguoiNhan,SoDienThoai,DonViGiaoHang,MaVanDon,TongTien,TenKhachHang")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +78,7 @@ namespace WebBanHang.Controllers.Admin
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHoaDon,NgaySuatHoaDon,ThanhToan,DiaChiNguoiNhan,SoDienThoai,DonViGiaoHang,MaVanDon,TongTien")] HoaDon hoaDon)
+        public ActionResult Edit([Bind(Include = "MaHoaDon,NgaySuatHoaDon,ThanhToan,DiaChiNguoiNhan,SoDienThoai,DonViGiaoHang,MaVanDon,TongTien,TenKhachHang")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {

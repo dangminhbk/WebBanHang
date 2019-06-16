@@ -180,10 +180,10 @@
     <Compile Include="Controllers\Admin\DanhMucSanPhamsController.cs" />
     <Compile Include="Controllers\Admin\HoaDonsController.cs" />
     <Compile Include="Controllers\Admin\SanPhamsController.cs" />
-    <Compile Include="Controllers\Admin\TinNhansController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\KhachHang\CartController.cs" />
     <Compile Include="Controllers\KhachHang\CuaHangController.cs" />
+    <Compile Include="Controllers\KhachHang\ThanhToanController.cs" />
     <Compile Include="Controllers\KhachHang_React\API\SanPhamAPIController.cs" />
     <Compile Include="Controllers\KhachHang_React\KhachHangReactController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
@@ -198,13 +198,11 @@
     <Compile Include="Models\DanhMucBaiViet.cs" />
     <Compile Include="Models\DanhMucSanPham.cs" />
     <Compile Include="Models\HoaDon.cs" />
-    <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\SanPham_HoaDon.cs" />
     <Compile Include="Models\SanPham_simple.cs" />
     <Compile Include="Models\sysdiagram.cs" />
-    <Compile Include="Models\TinNhan.cs" />
     <Compile Include="Models\WebHoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -353,6 +351,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\KhachHangReact\AsidePartial.cshtml" />
+    <Content Include="Views\ThanhToan\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,8 +5,11 @@
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h2>Danh sách hóa đơn</h2>
+<h2>Index</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -22,89 +25,52 @@
             @Html.DisplayNameFor(model => model.SoDienThoai)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.DonViGiaoHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaVanDon)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.TongTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenKhachHang)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgaySuatHoaDon)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ThanhToan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiaChiNguoiNhan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoDienThoai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TongTien)
-            </td>
-            <td>
-                <button class="btn btn-primary">
-                    @Html.ActionLink("Details", "Details", new { id = item.MaHoaDon })
-                </button>
-                <button class="btn btn-primary">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MaHoaDon })
-                </button>
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgaySuatHoaDon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThanhToan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChiNguoiNhan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoDienThoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonViGiaoHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaVanDon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongTien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenKhachHang)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaHoaDon }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaHoaDon }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaHoaDon })
+        </td>
+    </tr>
+}
 
 </table>
-<br />
-<div class="pager">
-    @if (@ViewBag.pageCurrent == 1 && ViewBag.pageTotal == 1)
-    {
-        <div class="pager-num">
-            Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
-        </div>
-    }
-    else
-    {
-        if (ViewBag.pageCurrent == 1)
-        {
-            <button class="btn btn-primary">
-                @Html.ActionLink("Next", "Index", new { page = (int)ViewBag.pageCurrent + 1, pageSize = 7 })
-            </button>
-            <div class="pager-num">
-                Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
-            </div>
-        }
-        else
-        {
-            if (ViewBag.pageCurrent == ViewBag.pageTotal)
-            {
-                <div class="pager-num">
-                    Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
-                </div>
-                <button class="btn btn-primary">
-                    @Html.ActionLink("Prev", "Index", new { page = (int)ViewBag.pageCurrent - 1, pageSize = 7 })
-                </button>
-            }
-            else
-            {
-                <button class="btn btn-primary">
-                    @Html.ActionLink("Next", "Index", new { page = (int)ViewBag.pageCurrent + 1, pageSize = 7 })
-                </button>
-                <div class="pager-num">
-                    Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
-                </div>
-                <button class="btn btn-primary">
-                    @Html.ActionLink("Prev", "Index", new { page = (int)ViewBag.pageCurrent - 1, pageSize = 7 })
-                </button>
-            }
-        }
-    }
-</div>
-<hr />
-<p>
-    <button class="btn btn-primary">
-        @Html.ActionLink("Create New", "Create")
-    </button>
-</p>
