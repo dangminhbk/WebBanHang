@@ -14,8 +14,6 @@
         public HoaDon()
         {
             SanPham_HoaDon = new HashSet<SanPham_HoaDon>();
-            KhachHangs = new HashSet<KhachHang>();
-            NhanViens = new HashSet<NhanVien>();
         }
         [DisplayName("Mã hóa đơn")]
         [Key]
@@ -32,7 +30,7 @@
         [DisplayName("Số điện thoại")]
         [StringLength(20)]
         public string SoDienThoai { get; set; }
-        [DisplayName("ĐƠn vị giao hàng")]
+        [DisplayName("Đơn vị giao hàng")]
         [StringLength(100)]
         public string DonViGiaoHang { get; set; }
         [DisplayName("Mã vận đơn")]
@@ -40,14 +38,11 @@
         public string MaVanDon { get; set; }
         [DisplayName("Tổng tiền")]
         public int? TongTien { get; set; }
-
+        [DisplayName("Họ và tên khách hàng")]
+        [StringLength(200)]
+        public string TenKhachHang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SanPham_HoaDon> SanPham_HoaDon { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KhachHang> KhachHangs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NhanVien> NhanViens { get; set; }
     }
 }
