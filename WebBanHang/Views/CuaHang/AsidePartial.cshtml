@@ -1,14 +1,16 @@
 ﻿@model List<WebBanHang.Models.DanhMucSanPham>
 <aside>
     <div class="header-title">
-        <h3> Danh muc </h3>
+        <h3> DANH MỤC </h3>
     </div>
     <div class="Danh mục">
-        <ul>
+        <ul style="list-style-type: circle;">
             @foreach (var item in Model)
             {
-                <li>
+                <li class="li">
+                    <button class="btn">
                     @Html.ActionLink(item.TenDanhMuc, "Index",new { danhMuc = item.MaDanhMuc})
+                    </button>
                 </li>
             }
         </ul>
@@ -17,3 +19,22 @@
         <ul class="filter-list"></ul>
     </div>
 </aside>
+<style>
+    .btn {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        /* padding: 5px 10px; */
+        /* text-align: left; */
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        width: 95%;
+        
+    }
+    .li{
+        text-:none;
+    }
+</style>
