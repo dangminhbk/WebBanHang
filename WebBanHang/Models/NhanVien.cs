@@ -12,6 +12,7 @@ namespace WebBanHang.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NhanVien()
         {
+            HoaDons = new HashSet<HoaDon>();
         }
 
         [StringLength(20)]
@@ -25,5 +26,12 @@ namespace WebBanHang.Models
 
         [Key]
         public int MaNhanVien { get; set; }
+
+        public int? MaNhaHang { get; set; }
+
+        public virtual NhaHang NhaHang { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }
