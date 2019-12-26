@@ -17,8 +17,11 @@ namespace WebBanHang.Models
         public virtual DbSet<DanhMucBaiViet> DanhMucBaiViets { get; set; }
         public virtual DbSet<DanhMucSanPham> DanhMucSanPhams { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
+
+        public virtual DbSet<NhaHang_DanhMuc> NhaHang_DanhMucs { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<NhaHang> NhaHangs { get; set; }
         public virtual DbSet<SanPham_HoaDon> SanPham_HoaDon { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 

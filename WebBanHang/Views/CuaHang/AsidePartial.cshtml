@@ -1,14 +1,17 @@
 ﻿@model List<WebBanHang.Models.DanhMucSanPham>
-<aside>
+<aside class="sidebar">
     <div class="header-title">
         <h3> Danh muc </h3>
     </div>
     <div class="Danh mục">
         <ul>
+            <li>
+                @Html.ActionLink("Tất cả", "Index", new { maNhaHang = ViewBag.maNhaHang });
+            </li>
             @foreach (var item in Model)
             {
-                <li>
-                    @Html.ActionLink(item.TenDanhMuc, "Index",new { danhMuc = item.MaDanhMuc})
+                <li class="">
+                    @Html.ActionLink(item.TenDanhMuc, "Index",new { maNhaHang = ViewBag.maNhaHang, maDanhMuc = item.MaDanhMuc})
                 </li>
             }
         </ul>

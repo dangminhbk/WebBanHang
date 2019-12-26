@@ -1,84 +1,35 @@
-﻿@model List<WebBanHang.Models.SanPham>
+﻿@using WebBanHang.Models.CuaHang
+@using WebBanHang.HttpHelpers
+@model SanPhamCuaHang
 @{
     ViewBag.Title = "Index2";
     Layout = "~/Views/Shared/_Main.cshtml";
 }
 <link href="~/Content/DanhMuc/index.css" rel="stylesheet" />
-@Html.Action("AsidePartial")
-<main>
-    <div class="main-header">
-        <div class="main-header-title">
-            Danh sách sản phẩm
-        </div>
-    </div>
-    <ul class="main-list">
-        @foreach (var item in Model)
+@Html.Action("AsidePartial", new { maNhaHang = Model.MaNhaHang })
+<main style="width:80%; margin:auto">
+    <h1 class="text-center">Danh sách sản phẩm</h1>
+
+
+    <div class="row">
+        @foreach (var item in Model.SanPhams)
         {
-            <li class="sanpham">
-                <a href="/CuaHang/Details/@item.MaSanPham">
-                    <div class="image-wrap">
-                        @if (item.AnhSanPhams.Count > 0)
-                        {
-                            <img src="~/@item.AnhSanPhams.First().DuongDanAnh" class="sanpham-image" alt="Alternate Text" />
-                        }
-                        else
-                        {
-                            <img class="sanpham-image" src="~/Image/speedwell.jpg" alt="Alternate Text" />
-                        }
-                        <span class="giohang-icon hidden-icon">
-                        </span>
-                        <span class="view-icon hidden-icon">
-                        </span>
+            <div class="col-md-4 text-center" style="margin-bottom:50px;">
+                <div class="card">
+                    <img class="card-img-top" src="~/@item.AnhSanPhams.First().DuongDanAnh" class="sanpham-image" alt="Alternate Text" />
+                    <div class="card-body">
+                        <h2>@item.TenSanPham</h2>
+                        <div class="badge badge-danger">@item.GiaSanPham vnd</div>
                     </div>
-                    <label class="sanpham-name">@item.TenSanPham:</label>
-                    <label class="sanpham-price">@item.GiaSanPham vnđ</label>
-                </a>
-            </li>
-        }
-    </ul>
-    <br />
-    <div class="pager">
-        @if (@ViewBag.pageCurrent == 1 && ViewBag.pageTotal == 1)
-        {
-            <div class="pager-num">
-                Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
+                    <div class="card-footer">
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaSanPham }, new { @class = "btn btn-info"})
+                    </div>
+                </div>
             </div>
         }
-        else
-        {
-            if (ViewBag.pageCurrent == 1)
-            {
-                <button class="btn btn-primary">
-                    @Html.ActionLink("Next", "Index", new { page = (int)ViewBag.pageCurrent + 1, pageSize = 9 })
-                </button>
-                <div class="pager-num">
-                    Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
-                </div>
-            }
-            else
-            {
-                if (ViewBag.pageCurrent == ViewBag.pageTotal)
-                {
-                    <div class="pager-num">
-                        Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
-                    </div>
-                    <button class="btn btn-primary">
-                        @Html.ActionLink("Prev", "Index", new { page = (int)ViewBag.pageCurrent - 1, pageSize = 9 })
-                    </button>
-                }
-                else
-                {
-                    <button class="btn btn-primary">
-                        @Html.ActionLink("Next", "Index", new { page = (int)ViewBag.pageCurrent + 1, pageSize = 9 })
-                    </button>
-                    <div class="pager-num">
-                        Trang: @ViewBag.pageCurrent / @ViewBag.pageTotal
-                    </div>
-                    <button class="btn btn-primary">
-                        @Html.ActionLink("Prev", "Index", new { page = (int)ViewBag.pageCurrent - 1, pageSize = 9 })
-                    </button>
-                }
-            }
-        }
     </div>
+<br />
+<div class="pager">
+    @Html.CreatePageLinks(Model.PageInfo, x => Url.Action("Index", new { maNhaHang = Model.MaNhaHang, page = x }))
+</div>
 </main>

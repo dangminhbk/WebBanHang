@@ -1,84 +1,39 @@
-﻿
+﻿@using WebBanHang.Models.CuaHang;
+@using WebBanHang.HttpHelpers
+@model CuaHangViewModel
+
 @{
-    ViewBag.Title = "Index2";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Main.cshtml";
 }
 <main>
-    <a href="#" class="catalogue">
-        <div class="catalogue-label">Cơm</div>
-        <div class="catalogue-spotlight">
-            <ul class="catalogue-spotlight-ul">
-                <li class="sanpham">
-                    <div class="image-wrap">
-                        <img class="sanpham-image" src="~/Image/Com/CanhGaNhoiLaThacLac.jpg" alt="Alternate Text" />
+    <h1 class="text-center" style="margin-bottom:100px; margin-top:50px;">Danh sách các món ăn</h1>
+    <div class="row">
+        @foreach (var item in Model.NhaHangs)
+        {
+            <div class="col-md-4 text-center">
+                <div class="card" style="width:18rem;margin-bottom:40px; margin-left:auto;margin-right:auto;">
+                    <img class="card-img-top" src="/@item.SanPhams.First().AnhSanPhams.First().DuongDanAnh" alt="Alternate Text" />
+                    <div class="card-body">
+                        <h3>@item.TenNhaHang</h3>
+                        <div>@item.DiaChi</div>
+                        <div>
+                            @foreach (var maSP in item.SanPhams.Select(sp => sp.DanhMucSanPham.TenDanhMuc).Distinct().ToList())
+                            {
+                                <span class="badge badge-info">@maSP</span>
+                            }
+                        </div>
                     </div>
-                    <label class="sanpham-name">Cánh gà nhồi lá thác lác</label>
-                </li>
-                <li class="sanpham">
-                    <div class="image-wrap">
-                        <img class="sanpham-image" src="~/Image/Com/ComChienDuaHaiSan.jpg" alt="Alternate Text" />
+                    <div class="card-footer">
+                        <a href="@Url.Action("Index", "CuaHang", new { maNhaHang = item.MaNhaHang })" class="btn btn-primary">Xem chi tiet</a>
                     </div>
-                    <label class="sanpham-name">Cơm chiên dưa hải sản</label>
-                </li>
-                <li class="sanpham">
-                    <div class="image-wrap">
-                        <img class="sanpham-image" src="~/Image/Com/ComGaXaoLaQue.jpg" alt="Alternate Text" />
-                    </div>
-                    <label class="sanpham-name">Cơm gà xào lá quế</label>
-                </li>
-            </ul>
-        </div>
-    </a>
-    <a href="#" class="catalogue">
-        <div class="catalogue-label">Đồ uống</div>
-        <div class="catalogue-spotlight">
-            <ul class="catalogue-spotlight-ul">
-                <li class="sanpham">
-                    <div class="image-wrap">
-                        <img class="sanpham-image" src="~/Image/DoUong/MatchaCream.jpg" alt="Alternate Text" />
-                    </div>
-                    <label class="sanpham-name">match Cream</label>
-                </li>
-                <li class="sanpham">
-                    <div class="image-wrap">
-                        <img class="sanpham-image" src="~/Image/DoUong/MatchaMilkTea.jpg" alt="Alternate Text" />
-                    </div>
-                    <label class="sanpham-name">Match Milk Tea</label>
-                </li>
-                <li class="sanpham">
-                    <div class="image-wrap">
-                        <img class="sanpham-image" src="~/Image/DoUong/TraDen.jpg" alt="Alternate Text" />
-                    </div>
-                    <label class="sanpham-name">Trà đen</label>
-                </li>
-            </ul>
-        </div>
-    </a>
-    <a href="#" class="catalogue">
-        <div class="catalogue-label">Thức ăn đường phố</div>
-        <div class="catalogue-spotlight">
-            <ul class="catalogue-spotlight-ul">
-                <li class="sanpham">
-                    <div class="image-wrap">
-                        <img class="sanpham-image" src="~/Image/MonAnDuongPho/ChaTomSotXiMuoi.jpg" alt="Alternate Text" />
-                    </div>
-                    <label class="sanpham-name">Chả tôm xốt xí muội</label>
-                </li>
-                <li class="sanpham">
-                    <div class="image-wrap">
-                        <img class="sanpham-image" src="~/Image/MonAnDuongPho/MucChienTrungMuoi.jpg" alt="Alternate Text" />
-                    </div>
-                    <label class="sanpham-name">Mực chiên trứng muối</label>
-                </li>
-                <li class="sanpham">
-                    <div class="image-wrap">
-                        <img class="sanpham-image" src="~/Image/MonAnDuongPho/ChaTomSotXiMuoi.jpg" alt="Alternate Text" />
-                    </div>
-                    <label class="sanpham-name">Cơm ngon</label>
-                </li>
-            </ul>
-        </div>
-    </a>
+                </div>
+            </div>
+        }
+    </div>
+    <div>
+        @Html.CreatePageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+    </div>
 </main>
 @section Scripts{
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>

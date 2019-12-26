@@ -5,40 +5,35 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebBanHang.Models;
-
+using WebBanHang.Models.CuaHang;
+using WebBanHang.Models.Page;
 namespace WebBanHang.Controllers.KhachHang
 {
     public class CuaHangController : Controller
     {
+        int pageSize = 6;
         // GET: CuaHang
         private WebHoa db = new WebHoa();
-        public ActionResult Index(int? page, int? pageSize , int?danhMuc)
+        public ActionResult Index(int? maNhaHang, int? maDanhMuc, int page = 1)
         {
-            int skip = 0;
-            int take = 0;
-            int pageCurrent = 1;
-            int pageTotal = 1;
-            if (page != null && pageSize != null)
+            IEnumerable<SanPham> sanPhams = db.SanPhams
+                   .Where(sp => sp.MaNhaHang == maNhaHang && (!maDanhMuc.HasValue || sp.MaDanhMuc == maDanhMuc.Value))
+                   .OrderBy(sp => sp.MaSanPham)
+                   .Skip((page - 1) * pageSize)
+                   .Take(pageSize);
+            System.Diagnostics.Debug.Print("Count: " + db.SanPhams.Where(sp => sp.MaNhaHang == maNhaHang).Count());
+            SanPhamCuaHang sanPhamCuaHang = new SanPhamCuaHang
             {
-                pageCurrent = (int)page;
-                skip = ((int)page - 1) * (int)pageSize;
-                take = (int)pageSize;
-            }
-            else
-            {
-                skip = 0;
-                take = 9;
-            }
-            var sanPhams = db.SanPhams.ToList();
-            if (danhMuc!= null)
-            {
-                sanPhams = db.DanhMucSanPhams.Find(danhMuc).SanPhams.ToList();
-            }
-            pageTotal = sanPhams.Count() / take + 1;
-            var sanPhamsTrang = sanPhams.Skip(skip).Take(take).ToList();
-            ViewBag.pageCurrent = pageCurrent;
-            ViewBag.pageTotal = pageTotal;
-            return View(sanPhamsTrang);
+                MaNhaHang = maNhaHang,
+                SanPhams = sanPhams,
+                PageInfo = new PageInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = pageSize,
+                    TotalItems = db.SanPhams.Where(sp => sp.MaNhaHang == maNhaHang && (!maDanhMuc.HasValue || sp.MaDanhMuc == maDanhMuc.Value)).Count()
+                }
+            };
+            return View(sanPhamCuaHang);
         }
         public ActionResult Details(int? id)
         {
@@ -53,9 +48,11 @@ namespace WebBanHang.Controllers.KhachHang
             }
             return View(sanPham);
         }
-        public ActionResult AsidePartial()
+        public ActionResult AsidePartial(int? maNhaHang)
         {
-            var DanhMucSP = db.DanhMucSanPhams.ToList();
+            //var DanhMucSP = db.NhaHang_DanhMucs.Where(nhdm => nhdm.MaNhaHang == maNhaHang).Select(nhdm => nhdm.DanhMucSanPham).ToList();
+            var DanhMucSP = db.SanPhams.Where(sp => sp.MaNhaHang == maNhaHang).Select(sp => sp.DanhMucSanPham).Distinct().ToList();
+            ViewBag.maNhaHang = maNhaHang;
             return PartialView(DanhMucSP);
         }
     }

@@ -1,4 +1,4 @@
-namespace WebBanHang.Models
+﻿namespace WebBanHang.Models
 {
     using System;
     using System.Collections.Generic;
@@ -22,8 +22,14 @@ namespace WebBanHang.Models
 
         [Required]
         [StringLength(200)]
-        [Display(Name = "T�n nh� h�ng")]
+        [Display(Name = "Tên nhà hàng")]
         public string TenNhaHang { get; set; }
+
+        [Display(Name ="Địa chỉ")]
+        public string DiaChi { get; set; }
+
+        [Display(Name = "Mô tả")]
+        public string MoTa { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NhaHang_DanhMuc> NhaHang_DanhMuc { get; set; }

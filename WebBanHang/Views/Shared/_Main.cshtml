@@ -8,11 +8,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Shared/Index.css" rel="stylesheet" />
+    @*<link href="~/Content/Home/Navbar.css" rel="stylesheet" />*@
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     @RenderSection("CSS", false)
 </head>
 <body>
-    @Html.Partial("Navbar")
+
+    @*<div class="wraper">
+    </div>*@
+        @Html.Partial("Navbar")
     @RenderBody()
     @Html.Partial("footer")
     @RenderSection("Scripts", false)

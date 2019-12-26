@@ -191,11 +191,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HttpHelpers\PagingHelper.cs" />
     <Compile Include="Models\AnhSanPham.cs" />
     <Compile Include="Models\BaiViet.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
     <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\CuaHang\CuaHangViewModel.cs" />
+    <Compile Include="Models\CuaHang\SanPhamCuaHang.cs" />
     <Compile Include="Models\DanhMucBaiViet.cs" />
     <Compile Include="Models\DanhMucSanPham.cs" />
     <Compile Include="Models\HoaDon.cs" />
@@ -203,6 +206,7 @@
     <Compile Include="Models\NhaHang.cs" />
     <Compile Include="Models\NhaHang_DanhMuc.cs" />
     <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\Page\PageInfo.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\SanPham_HoaDon.cs" />
     <Compile Include="Models\SanPham_simple.cs" />
@@ -223,6 +227,7 @@
     <Content Include="Content\DanhMuc\react.css" />
     <Content Include="Content\Home\index.css" />
     <Content Include="Content\DanhMuc\index.css" />
+    <Content Include="Content\Home\Navbar.css" />
     <Content Include="Content\SanPham\sanpham.css" />
     <Content Include="Content\Shared\Admin.css" />
     <Content Include="Content\Shared\Index.css" />
