@@ -22,6 +22,7 @@ namespace WebBanHang.Models
 
         [Required]
         [StringLength(200)]
+        [Display(Name = "Tên nhà hàng")]
         public string TenNhaHang { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

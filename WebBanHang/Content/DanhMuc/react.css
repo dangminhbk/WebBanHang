@@ -77,7 +77,7 @@ main {
             main .main-list .sanpham .image-wrap {
                 width: 150px;
                 height: 150px;
-                margin-right: 0px;
+                margin-right: auto;
                 transition: all .5s;
             }
                 main .main-list .sanpham .image-wrap img{

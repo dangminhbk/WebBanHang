@@ -19,7 +19,7 @@
                     <div class="image-wrap">
                         @if (item.AnhSanPhams.Count > 0)
                         {
-                            <img src="@item.AnhSanPhams.First().DuongDanAnh" class="sanpham-image" alt="Alternate Text" />
+                            <img src="~/@item.AnhSanPhams.First().DuongDanAnh" class="sanpham-image" alt="Alternate Text" />
                         }
                         else
                         {
@@ -30,8 +30,8 @@
                         <span class="view-icon hidden-icon">
                         </span>
                     </div>
-                    <label class="sanpham-name">@item.TenSanPham </label>
-                    <label class="sanpham-price">@item.GiaSanPham</label>
+                    <label class="sanpham-name">@item.TenSanPham:</label>
+                    <label class="sanpham-price">@item.GiaSanPham vnđ</label>
                 </a>
             </li>
         }

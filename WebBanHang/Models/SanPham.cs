@@ -1,4 +1,4 @@
-namespace WebBanHang.Models
+﻿namespace WebBanHang.Models
 {
     using System;
     using System.Collections.Generic;
@@ -21,19 +21,22 @@ namespace WebBanHang.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Tên sản phẩm")]
         public string TenSanPham { get; set; }
 
+        [Display(Name = "Mô tả sản phẩm")]
         public string MoTaSanPham { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Màu sắc")]
         public string MauSac { get; set; }
 
+        [Display(Name = "Trọng lượng")]
         public double? TrongLuong { get; set; }
-
+        [Display(Name = "Giá sản phẩm")]
         public int? GiaSanPham { get; set; }
-
+        [Display(Name = "Giá khuyến mãi")]
         public int? GiaKhuyenMai { get; set; }
-
         public bool? KhuyenMai { get; set; }
 
         public int? MaDanhMuc { get; set; }

@@ -37,11 +37,10 @@
             <br />
             @foreach (var item in Model.AnhSanPhams)
             {
-                <img class="anhSP" id="@item.DuongDanAnh" onclick="showAnh('@item.DuongDanAnh')" style="width:200px;height:200px" src="@item.DuongDanAnh" />
+                <img class="anhSP" id="@item.DuongDanAnh" onclick="showAnh('@item.DuongDanAnh')" style="width:200px;height:200px" src="/@item.DuongDanAnh" />
             }
         </div>
         <dl>
-
             <dt>
                 @Html.DisplayNameFor(model => model.MauSac)
             </dt>
@@ -74,8 +73,12 @@
                 @Html.DisplayFor(model => model.GiaKhuyenMai) vnd
             </dd>
             <dt>
-
+                @Html.DisplayNameFor(model => model.NhaHang.TenNhaHang)
             </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NhaHang.TenNhaHang)
+            </dd>
 
             <dd>
                 <button class="btn btn-primary">
