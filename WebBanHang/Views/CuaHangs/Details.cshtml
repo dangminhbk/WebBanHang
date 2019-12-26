@@ -1,0 +1,68 @@
+﻿@model WebBanHang.Models.CuaHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CuaHang</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenCuaHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenCuaHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThongTinCuaHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThongTinCuaHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenChuCuaHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenChuCuaHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button class="btn btn-primary">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+    </button>
+</p>

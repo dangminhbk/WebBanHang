@@ -9,11 +9,6 @@ namespace WebBanHang.Models
     [Table("NhanVien")]
     public partial class NhanVien
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NhanVien()
-        {
-        }
-
         [StringLength(20)]
         public string TenDangNhap { get; set; }
 
@@ -25,5 +20,7 @@ namespace WebBanHang.Models
 
         [Key]
         public int MaNhanVien { get; set; }
+
+        public int? MaNhaHang { get; set; }
     }
 }

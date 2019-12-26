@@ -25,7 +25,7 @@
 }
 <div class="sp-detail">
     <div class="header">
-        <div class="link-row"><a href="">@Model.DanhMucSanPham.TenDanhMuc</a> > <a href="">@Model.TenSanPham</a></div>
+        @*<div class="link-row"><a href="">@Model.DanhMucSanPham.TenDanhMuc</a> > <a href="">@Model.TenSanPham</a></div>*@
         <br />
         <h3>@Model.TenSanPham</h3>
     </div>
@@ -35,28 +35,8 @@
         <div>
             <label>Ảnh sản phẩm</label>
             <br />
-            @foreach (var item in Model.AnhSanPhams)
-            {
-                <img class="anhSP" id="@item.DuongDanAnh" onclick="showAnh('@item.DuongDanAnh')" style="width:200px;height:200px" src="@item.DuongDanAnh" />
-            }
         </div>
         <dl>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.MauSac)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.MauSac)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.TrongLuong)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.TrongLuong)
-            </dd>
 
             <dt>
                 @Html.DisplayNameFor(model => model.GiaSanPham)

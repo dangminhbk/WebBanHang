@@ -9,7 +9,7 @@ namespace WebBanHang.Controllers.KhachHang_React
 {
     public class KhachHangReactController : Controller
     {
-        private WebHoa db = new WebHoa();
+        private WebHoaDBContext db = new WebHoaDBContext();
         // GET: KhachHangReact
         public ActionResult CuaHang()
         {
@@ -17,7 +17,7 @@ namespace WebBanHang.Controllers.KhachHang_React
         }
         public ActionResult AsidePartial()
         {
-            var DanhMucSP = db.DanhMucSanPhams.ToList();
+            var DanhMucSP = db.DanhMucSanPham.ToList();
             return PartialView(DanhMucSP);
         }
     }

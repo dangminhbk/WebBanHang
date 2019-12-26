@@ -1,4 +1,4 @@
-﻿@model WebBanHang.Models.SanPham
+﻿@model WebBanHang.Services.Dto.SanPhamDetailDto
 
 @{
     ViewBag.Title = "Details";
@@ -11,72 +11,52 @@
     <h4>Sản phẩm</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            Danh mục
+            @Html.DisplayNameFor(model => model.sanPham.TenSanPham)
         </dt>
+
         <dd>
-            @Html.DisplayFor(model => model.DanhMucSanPham.TenDanhMuc)
+            @Html.DisplayFor(model => model.sanPham.TenSanPham)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TenSanPham)
+            @Html.DisplayNameFor(model => model.sanPham.MoTaSanPham)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TenSanPham)
+            @Html.DisplayFor(model => model.sanPham.MoTaSanPham)
+        </dd>
+
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MoTaSanPham)
+            @Html.DisplayNameFor(model => model.sanPham.GiaSanPham)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MoTaSanPham)
+            @Html.DisplayFor(model => model.sanPham.GiaSanPham)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MauSac)
+            @Html.DisplayNameFor(model => model.sanPham.GiaKhuyenMai)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MauSac)
+            @Html.DisplayFor(model => model.sanPham.GiaKhuyenMai)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TrongLuong)
+            @Html.DisplayNameFor(model => model.sanPham.KhuyenMai)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TrongLuong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaSanPham)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaSanPham)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaKhuyenMai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaKhuyenMai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KhuyenMai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KhuyenMai)
+            @Html.DisplayFor(model => model.sanPham.KhuyenMai)
         </dd>
     </dl>
     <label>Ảnh sản phẩm</label>
     <br />
-    @foreach (var item in Model.AnhSanPhams)
+    @foreach (var item in Model.anhSanPhams )
     {
         <img style="width:200px;height:200px" src="@item.DuongDanAnh" />
     }
@@ -84,7 +64,7 @@
 <hr />
 <div>
     <button class="btn btn-primary">
-        @Html.ActionLink("Edit", "Edit", new { id = Model.MaSanPham })
+        @Html.ActionLink("Edit", "Edit", new { id = Model.sanPham.MaSanPham })
     </button>
     <button class="btn btn-primary">
         @Html.ActionLink("Back to List", "Index")

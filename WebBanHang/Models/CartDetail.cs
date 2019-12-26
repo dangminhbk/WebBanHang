@@ -18,5 +18,7 @@ namespace WebBanHang.Models
         public string Name { get; set; }
         [DisplayName("Số lượng")]
         public int Amount { get; set; }
+        public int IdCuaHang { get; set; }
+
     }
 }

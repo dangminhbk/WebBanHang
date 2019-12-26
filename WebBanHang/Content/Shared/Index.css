@@ -75,14 +75,15 @@ body {
             background-position:10px 10px;
             border-radius:3px;
         }
-            nav .logo {
-                background: url('/Image/logo2.png') no-repeat;
-                background-position-x: 80px;
-                margin: 0 auto;
-                height: 80px;
-                width: 400px;
-                background-size: contain;
-            }
+        nav .logo {
+            z-index: 3;
+            background: url(/Image/Food_Network_Logo.svg) no-repeat;
+            background-position-x: 270px;
+            background-position-y: 40px;
+            margin: 0 auto;
+            width: 600px;
+            height: 210px;
+        }
 
     aside {
         display: none;
@@ -128,13 +129,13 @@ body {
     }
 
     nav .logo {
-        background: url('/Image/logo2.png') no-repeat;
-        background-position-x: 90px;
-        background-position-y: 60px;
+        z-index: 3;
+        background: url(/Image/Food_Network_Logo.svg) no-repeat;
+        background-position-x: 270px;
+        background-position-y: 40px;
         margin: 0 auto;
         width: 600px;
-        height: 150px;
-        background-size: contain;
+        height: 210px;
     }
 
     nav .nav-button {
@@ -231,13 +232,13 @@ body {
     }
 
     nav .logo {
-        background: url('/Image/logo2.png') no-repeat;
-        background-position-x: 90px;
-        background-position-y:60px;
+        z-index: 3;
+        background: url(/Image/Food_Network_Logo.svg) no-repeat;
+        background-position-x: 270px;
+        background-position-y: 40px;
         margin: 0 auto;
         width: 600px;
-        height: 150px;
-        background-size: contain;
+        height: 210px;
     }
 
     nav .nav-button {

@@ -12,18 +12,18 @@ namespace WebBanHang.Models
         {
             _sanPham = sanPham;
         }
-        public string anhHienThi
-        {
-            get
-            {
-                var duongDan = _sanPham.AnhSanPhams;
-                if (duongDan.Count == 0)
-                {
-                    return "";
-                }
-                return duongDan.First().DuongDanAnh;
-            }
-        }
+        //public string anhHienThi
+        //{
+        //    get
+        //    {
+        //        var duongDan = _sanPham.AnhSanPhams;
+        //        if (duongDan.Count == 0)
+        //        {
+        //            return "";
+        //        }
+        //        return duongDan.First().DuongDanAnh;
+        //    }
+        //}
         public string TenSanPham
         {
             get

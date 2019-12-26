@@ -20,9 +20,6 @@
         <div class="col-md-4">
             @Html.DropDownList("MaDanhMuc", null, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-        <div class="col-md-4">
-            @Html.DropDownList("tenMau", (SelectList)ViewBag.MauSac, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
         <div class="col-md-3">
             <input type="submit" value="Tìm kiếm" class="btn btn-primary btn-timkiem" />
         </div>
@@ -34,17 +31,7 @@
 <table class="table">
     <tr>
         <th>
-            Tên danh mục
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TenSanPham)
-        </th>
-        <th>Ảnh</th>
-        <th>
-            @Html.DisplayNameFor(model => model.MauSac)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrongLuong)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.GiaSanPham)
@@ -56,22 +43,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DanhMucSanPham.TenDanhMuc)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.TenSanPham)
-            </td>
-            <td>
-                @if (item.AnhSanPhams.Count > 0)
-                {
-                    <img src="@item.AnhSanPhams.First().DuongDanAnh" width="80" height="80" alt="Alternate Text" />
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MauSac)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TrongLuong)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.GiaSanPham) vnđ

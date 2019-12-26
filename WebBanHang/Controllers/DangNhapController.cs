@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using WebBanHang.Models;
 
 namespace WebBanHang.Controllers
 {
     public class DangNhapController : Controller
     {
         // GET: DangNhap
+        private const string USER_ID_COOKIE_TYPE = "UserID";
         public ActionResult Index(bool? fail)
         {
             if(fail !=null&& fail== true)
@@ -20,10 +22,11 @@ namespace WebBanHang.Controllers
         }
         public ActionResult Login(string username, string password)
         {
-            if (isValidUser(username, password))
+            var loggerUser = GetLoginInfo(username, password);
+            if (loggerUser != null)
             {
-                FormsAuthentication.SetAuthCookie(username, false);
-                return RedirectToAction("Index", "Admin");
+                    FormsAuthentication.SetAuthCookie(loggerUser.MaNhanVien.ToString(), false);
+                    return RedirectToAction("Index", "Admin");
             }
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return RedirectToAction("Index",new { fail = true });
@@ -33,11 +36,11 @@ namespace WebBanHang.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "TrangChu");
         }
-        private bool isValidUser(string username, string password)
+        private NhanVien GetLoginInfo(string username, string password)
         {
-            using (var db = new WebBanHang.Models.WebHoa())
+            using (var db = new WebBanHang.Models.WebHoaDBContext())
             {
-                return db.NhanViens.Any(u => u.TenDangNhap == username && u.MatKhau == password);
+                return db.NhanVien.Where(u => u.TenDangNhap == username && u.MatKhau == password).FirstOrDefault();
             }
         }
     }

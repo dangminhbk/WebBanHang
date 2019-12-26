@@ -15,7 +15,7 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
 {
     public class SanPhamAPIController : ApiController
     {
-        private WebHoa db = new WebHoa();
+        private WebHoaDBContext db = new WebHoaDBContext();
         /// <summary>
         /// Tra ve danh sach san pham o trang 
         /// </summary>
@@ -25,7 +25,7 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
         {
             int pageT = (int)((page == null) ? 1 : page);
             //IQueryable<SanPham_simple> DanhSachSanPham = from item in db.SanPhams select new SanPham_simple(item);
-            var dsSkip = db.SanPhams.ToList().Skip((pageT - 1) * 9).Take(9).ToList();
+            var dsSkip = db.SanPham.ToList().Skip((pageT - 1) * 9).Take(9).ToList();
             var ds = new List<SanPham_simple>();
             foreach (var item in dsSkip)
             {
@@ -40,7 +40,7 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
         [HttpGet]
         public int SoLuongTrang()
         {
-            var count = db.SanPhams.Count();
+            var count = db.SanPham.Count();
             if (count % 9 == 0)
             {
                 return count / 9;
@@ -89,7 +89,7 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
                     Value = "%"+TenSanPham+"%",
                 }
             };
-            var result = db.SanPhams.SqlQuery(sqlQuery,paramList).ToList<SanPham>();
+            var result = db.SanPham.SqlQuery(sqlQuery, paramList).ToList<SanPham>();
             var ds = new List<SanPham_simple>();
             if (result != null)
             {
@@ -106,12 +106,12 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
         [HttpGet]
         public List<SanPham_simple> SanPhamDanhMuc(int? page, string DanhMuc)
         {
-            var result = db.DanhMucSanPhams.Where(item => item.TenDanhMuc == DanhMuc).First();
+            var result = db.DanhMucSanPham.Where(item => item.TenDanhMuc == DanhMuc).First();
             var ds = new List<SanPham_simple>();
             if (result != null)
             {
                 int pageT = (int)((page == null) ? 1 : page);
-                var dsSkip = result.SanPhams.ToList().Skip((pageT - 1) * 9).Take(9).ToList();
+                var dsSkip = db.SanPham.Where(s=>s.MaDanhMuc == result.MaDanhMuc).ToList().Skip((pageT - 1) * 9).Take(9).ToList();
                 foreach (var item in dsSkip)
                 {
                     ds.Add(new SanPham_simple(item));
@@ -122,11 +122,11 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
         [HttpGet]
         public int SoLuongTrangTheoDanhMuc(string DanhMuc)
         {
-            var result = db.DanhMucSanPhams.Where(item => item.TenDanhMuc == DanhMuc).First();
+            var result = db.DanhMucSanPham.Where(item => item.TenDanhMuc == DanhMuc).First();
             var count = 0;
             if (result != null)
             {
-                count = result.SanPhams.Count();
+                count = db.SanPham.Where(s => s.MaDanhMuc == result.MaDanhMuc).Count();
             }
             if (count % 9 == 0)
             {
@@ -138,7 +138,7 @@ namespace WebBanHang.Controllers.KhachHang_React.Api
         [ResponseType(typeof(SanPham))]
         public IHttpActionResult GetSanPham(int id)
         {
-            SanPham sanPham = db.SanPhams.Find(id);
+            SanPham sanPham = db.SanPham.Find(id);
             if (sanPham == null)
             {
                 return NotFound();

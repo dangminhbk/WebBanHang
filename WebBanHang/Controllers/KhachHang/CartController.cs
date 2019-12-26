@@ -10,11 +10,11 @@ namespace WebBanHang.Controllers.KhachHang
     public class CartController : Controller
     {
         // GET: Cart
-        private WebHoa db = new WebHoa();
+        private WebHoaDBContext db = new WebHoaDBContext();
         public ActionResult Index()
         {
             Cart cart = (Cart)Session["Cart"];
-            if(cart != null)
+            if (cart != null)
             {
                 return View(cart.Details);
             }
@@ -23,19 +23,19 @@ namespace WebBanHang.Controllers.KhachHang
         public ActionResult Add(int id)
         {
             Cart cart = (Cart)Session["Cart"];
-            if(cart == null)
+            if (cart == null)
             {
                 cart = new Cart();
             }
-            var sanPhams = db.SanPhams.Find(id);
+            var sanPhams = db.SanPham.Find(id);
             var gia = 0;
             if ((bool)sanPhams.KhuyenMai)
             {
-                gia =(int) sanPhams.GiaKhuyenMai;
+                gia = (int)sanPhams.GiaKhuyenMai;
             }
             else
             {
-                gia= (int)sanPhams.GiaSanPham;
+                gia = (int)sanPhams.GiaSanPham;
             }
             cart.AddCart(id, sanPhams.TenSanPham, gia);
             Session["Cart"] = cart;
@@ -45,7 +45,7 @@ namespace WebBanHang.Controllers.KhachHang
         {
             Cart cart = (Cart)Session["Cart"];
             cart.UpdateAmount(id, amount);
-            return View("Index",cart.Details);
+            return View("Index", cart.Details);
         }
     }
 }
