@@ -19,7 +19,7 @@ body {
 
 
 main {
-    background-image: url(/Image/ne.jpg);
+    background-image: url(/Image/woodbg2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -64,18 +64,19 @@ main {
     .catalogue .catalogue-label {
         position: absolute;
         margin-top: -9rem;
-        width: 200px;
+        width: 250px;
         height: 3rem;
-        border-radius: 5px;
-        background-color: #4d052d;
+        border-radius: 3px;
+        background-color: #28a745;
         color: #fff;
         font-size: 1.5rem;
-        font-style: italic;
+        font-style: normal;
         text-transform: capitalize;
-        font-weight: bolder;
+        font-weight: bold;
         text-align: center;
         padding-top: 0.5rem;
-        box-shadow: rgba(145,54,109,0.5) 4px 0px 3px;
+        white-space:nowrap;
+        /*box-shadow: rgba(145,54,109,0.5) 4px 0px 3px;*/
     }
 
     .catalogue .catalogue-spotlight {

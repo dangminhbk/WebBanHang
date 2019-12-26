@@ -124,11 +124,11 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #000;
+        background-color: #28a745;
     }
 
     nav .logo {
-        background: url('/Image/logo2.png') no-repeat;
+        background: url('/Image/food.png') no-repeat;
         background-position-x: 90px;
         background-position-y: 60px;
         margin: 0 auto;
@@ -142,8 +142,6 @@ body {
     }
 
     nav {
-        background-image: linear-gradient(#000,#4d052d);
-        display: grid;
         grid-template-rows: 50px 150px;
     }
 
@@ -227,17 +225,18 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color:#000;
+        background-color: #28a745;
     }
 
     nav .logo {
-        background: url('/Image/logo2.png') no-repeat;
-        background-position-x: 90px;
-        background-position-y:60px;
+        background: url(/Image/freshfood.jpg) no-repeat;
+        background-position-x: center;
+        align-content: center;
         margin: 0 auto;
-        width: 600px;
+        /* width: 600px; */
         height: 150px;
         background-size: contain;
+        background-color: white;
     }
 
     nav .nav-button {
@@ -245,8 +244,6 @@ body {
     }
 
     nav {
-        background-image: linear-gradient(#000,#4d052d) ;
-        display: grid;
         grid-template-rows: 50px 150px;
     }
 
@@ -263,31 +260,29 @@ body {
                 margin-left: 20px;
                 margin-right: 20px;
                 padding: 5px 15px 5px 15px;
-                border-radius: 5px;
+                border-radius: 2px;
                 border: solid 1px rgba(0,0,0,0);
             }
 
                 nav ul li.active {
-                    background-color: #c30075;
-                    border: solid 1px #4d052d;
+                    background-color: #808080;
                 }
 
                 nav ul li:hover {
-                    background-color: #c30075;
-                    border: solid 1px #4d052d;
+                    background-color: #808080;
                 }
 
                 nav ul li a {
                     font-size: 16px;
-                    font-weight: bold;
+                    /*font-weight: bold;*/
                     color: white;
                     text-decoration: none;
                     text-transform: uppercase;
                 }
 
     footer {
-        border-top: solid 2px white;
-        background-color: #4d052d;
+        /*border-top: solid 2px white;*/
+        background-color: #28a745;
         display: grid;
         grid-template-columns: 1fr 1fr;
         flex-direction: row;

@@ -252,13 +252,14 @@
     <Content Include="Image\Mi\MiRamenKimChi.jpg" />
     <Content Include="Image\MonAnDuongPho\ChaTomSotXiMuoi.jpg" />
     <Content Include="Image\MonAnDuongPho\MucChienTrungMuoi.jpg" />
-    <Content Include="Image\ne.jpg" />
     <Content Include="Image\icon\giohang.png" />
     <Content Include="Image\logo2.png" />
     <Content Include="Image\logo.png" />
     <Content Include="Image\speedwell.jpg" />
     <Content Include="Image\sunflower.jpg" />
     <Content Include="Image\tulips.jpg" />
+    <Content Include="Image\woodbg.jpg" />
+    <Content Include="Image\woodbg2.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
